@@ -1,0 +1,18 @@
+﻿<Application x:Class="QuanLyBanHangClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:QuanLyBanHangClient"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="WindowControl/Login.xaml">
+    <Application.Resources>
+        <ResourceDictionary >
+            <FontFamily x:Key="KeChuyen">pack://application:,,,/Resource/Font/#UVN Ke Chuyen1</FontFamily>
+            <FontFamily x:Key="Vini">pack://application:,,,/Resource/Font/#VNI-Helve-Condense</FontFamily>
+            <ImageSource x:Key="ImageDefaultFood">/Resource/Image/default-food-image.jpg</ImageSource>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource/StringResources.xaml" />
+                <ResourceDictionary Source="Resource/ResourcesStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
