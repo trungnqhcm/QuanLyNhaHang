@@ -15,32 +15,24 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0,12,0,0" FontFamily="{StaticResource KeChuyen}"  FontSize="22"  FlowDirection="LeftToRight" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold">
-                <TextBlock.Background>
-                    <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                        <GradientStop Offset="0"/>
-                        <GradientStop Color="#FFBC4444" Offset="0.4"/>
-                        <GradientStop Color="#FFBC4444" Offset="0.6"/>
-                        <GradientStop Offset="1"/>
-                    </LinearGradientBrush>
-                </TextBlock.Background>
+            <TextBlock Margin="0,12,0,0" FontFamily="Arial"  FontSize="18"  FlowDirection="LeftToRight" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Background="DarkGray">
                     Restauran Manager
             </TextBlock>
-            <Image Source="/Resource/Image/app-logo-2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="33,0,0,8"/>
+            <Image Source="/Resource/Image/app-logo-2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="33,0,0,8" Visibility="Hidden"/>
             <StackPanel Grid.Row="1">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0">
-                    <TextBlock Foreground="White" FontWeight="Bold" Width="120">Tên đăng nhập :</TextBlock>
-                    <TextBox x:Name="TextBoxUserName" Template="{StaticResource TextBoxRoundedTemplate}" Width="250" MaxLength="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">admin</TextBox>
+                    <TextBlock Foreground="Black" FontWeight="Bold" Width="120">Tên đăng nhập :</TextBlock>
+                    <TextBox x:Name="TextBoxUserName"  Width="250" MaxLength="64" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" TextChanged="TextBoxUserName_TextChanged" HorizontalAlignment="Left">admin</TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
-                    <TextBlock Foreground="White" FontWeight="Bold" Width="120">Mật khẩu :</TextBlock>
-                    <PasswordBox x:Name="PasswordBoxPassword" Template="{StaticResource PasswordBoxRoundedTemplate}" Width="250" MaxLength="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Password="admin"></PasswordBox>
+                    <TextBlock Foreground="Black" FontWeight="Bold" Width="120">Mật khẩu :</TextBlock>
+                    <PasswordBox x:Name="PasswordBoxPassword"  Width="250" MaxLength="32" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Password="admin" HorizontalAlignment="Left"></PasswordBox>
                 </StackPanel>
-                <CheckBox x:Name="CheckBoxRememberPass" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,15,0,0" Background="White" Foreground="White" Checked="CheckBoxRememberPass_Checked" Unchecked="CheckBoxRememberPass_Unchecked">Nhớ mật khẩu</CheckBox>
-                <CheckBox x:Name="CheckBoxKeepLogin" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="28,8,0,0" Background="White" Foreground="White" Checked="CheckBoxKeepLogin_Checked" Unchecked="CheckBoxKeepLogin_Unchecked">Tự động đăng nhập</CheckBox>
+                <CheckBox x:Name="CheckBoxRememberPass" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,15,0,0" Background="White" Foreground="Black" Checked="CheckBoxRememberPass_Checked" Unchecked="CheckBoxRememberPass_Unchecked">Nhớ mật khẩu</CheckBox>
+                <CheckBox x:Name="CheckBoxKeepLogin" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="28,8,0,0" Background="White" Foreground="Black" Checked="CheckBoxKeepLogin_Checked" Unchecked="CheckBoxKeepLogin_Unchecked" Visibility="Hidden">Tự động đăng nhập</CheckBox>
                 <TextBlock x:Name="TextBlockWarining" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" Foreground="#FFF4FF00" Visibility="Hidden">Mật khẩu không khớp, vui lòng nhập lại</TextBlock>
             </StackPanel>
-            <Button x:Name="BtnLogin" Style="{StaticResource BtnBorderStyle}"  Grid.Row="2" Width="120" Height="40" Click="BtnLogin_Click">Đăng nhập</Button>
+            <Button x:Name="BtnLogin"   Grid.Row="2" Width="120" Height="40" Click="BtnLogin_Click" Background="White">Đăng nhập</Button>
         </Grid>
         <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
             <controls:CircularProgressBar x:Name="progressBar"

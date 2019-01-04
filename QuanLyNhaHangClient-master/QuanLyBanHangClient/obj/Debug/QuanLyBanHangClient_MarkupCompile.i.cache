@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Project\QuanLyNhaHangClient-master\QuanLyBanHangClient\obj\Debug\
+C:\Project\QLNH\QuanLyNhaHangClient-master\QuanLyBanHangClient\obj\Debug\
 QuanLyBanHangClient
 none
 false
 DEBUG;TRACE
-C:\Project\QuanLyNhaHangClient-master\QuanLyBanHangClient\App.xaml
+C:\Project\QLNH\QuanLyNhaHangClient-master\QuanLyBanHangClient\App.xaml
 34-445952545
 
 741497533079
-19-1875840604
+191440418244
 AppUserControl\Custom\CircularProgressBar.xaml;AppUserControl\Custom\ComboBoxRoundedImage.xaml;AppUserControl\Custom\RadioListBox.xaml;AppUserControl\FoodTab\FoodCell.xaml;AppUserControl\FoodTab\FoodComboBoxItem.xaml;AppUserControl\FoodTab\FoodTab.xaml;AppUserControl\ImportIngredientTab\ImportDetailTab\ImportDetailTab.xaml;AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryCell.xaml;AppUserControl\ImportIngredientTab\ImportHistoryTab\ImportHistoryTab.xaml;AppUserControl\ImportIngredientTab\ImportIngredientTab.xaml;AppUserControl\ImportIngredientTab\ImportTab\ImportIngredientCell.xaml;AppUserControl\ImportIngredientTab\ImportTab\ImportTab.xaml;AppUserControl\IngredientTab\IngredientTab.xaml;AppUserControl\OrderAndTable\Models\OrderInfo.xaml;AppUserControl\OrderAndTable\Models\OrderWithFood.xaml;AppUserControl\OrderAndTable\Models\TableInfo.xaml;AppUserControl\OrderAndTable\OrderAndTableTab.xaml;AppUserControl\OrderAndTable\OrderHistoryTab.xaml;AppUserControl\OrderAndTable\OrderTab.xaml;AppUserControl\OrderAndTable\TableTab.xaml;AppUserControl\PrepareFoodTab\PrepareFoodCell.xaml;AppUserControl\PrepareFoodTab\PrepareFoodTab.xaml;AppUserControl\ReportTab\ReportMainTab.xaml;WindowControl\CategorizeDetail.xaml;WindowControl\ChangePassWindow.xaml;WindowControl\ChangeRestaurantInfoWindow.xaml;WindowControl\ExportBillWindow.xaml;WindowControl\FoodDetail.xaml;WindowControl\Login.xaml;WindowControl\UnitDetail.xaml;WindowControl\IngredientDetail.xaml;WindowControl\MainWindow.xaml;Resource\ResourcesStyle.xaml;Resource\StringResources.xaml;
 
 True

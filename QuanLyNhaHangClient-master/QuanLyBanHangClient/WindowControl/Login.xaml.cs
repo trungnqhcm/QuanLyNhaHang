@@ -133,5 +133,10 @@ namespace QuanLyBanHangClient.WindowControl
         private void CheckBoxKeepLogin_Unchecked(object sender, RoutedEventArgs e) {
             UserInfoManager.getInstance().setIsKeepSignedIn(false);
         }
+
+        private void TextBoxUserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

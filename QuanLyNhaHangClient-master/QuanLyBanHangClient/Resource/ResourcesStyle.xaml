@@ -5,14 +5,14 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
 
     <SolidColorBrush 
                 x:Key="MainSolidColor"
-                Color="#FF6F3838"/>
-    <Color x:Key="MainColor">#FF6F3838</Color>
+                Color="LightGray"/>
+    <Color x:Key="MainColor">#d3d3d3</Color>
     <!-- String resource that can be localized -->
     <CornerRadius x:Key="CornerRadiusValue" 
-               TopLeft= "8" 
-               TopRight="8"
-               BottomRight="8"
-               BottomLeft= "8" />
+               TopLeft= "2" 
+               TopRight="2"
+               BottomRight="2"
+               BottomLeft= "2" />
     <Thickness x:Key="ThicknessValue1"
                Top = "1" 
                Bottom ="1"
