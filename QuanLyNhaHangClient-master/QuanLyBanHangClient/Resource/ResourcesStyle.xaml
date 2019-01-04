@@ -90,13 +90,10 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
     <Style x:Key="BorderGreen" TargetType="Border">
         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
         <Setter Property="Padding" Value="2"/>
-        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" >
             <Setter.Value>
-                <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
-                    <GradientStop Color="#FFFF7D7D" Offset="0"/>
-                    <GradientStop Color="#FFFF7D7D" Offset="1"></GradientStop>
-                </LinearGradientBrush>
+                <SolidColorBrush Color="Black"></SolidColorBrush>
             </Setter.Value>
         </Setter>
     </Style>
@@ -158,8 +155,8 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         <!--Cursor="Hand" Height="40" Foreground="#FFF4FF00"-->
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Foreground" Value="#FFF4FF00"/>
-        <Setter Property="Background" Value="#7F321C1C"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Gray"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">
@@ -173,10 +170,10 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFD4A6A6"/>
+                <Setter Property="Background" Value="DarkGray"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="#4CA37A7A"/>
+                <Setter Property="Background" Value="LightGray"/>
             </Trigger>
         </Style.Triggers>
         

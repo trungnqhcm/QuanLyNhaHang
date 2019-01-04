@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="491" d:DesignWidth="800">
     <Grid>
-        <local:TableTab x:Name="TableTabCustom" Visibility="Visible"/>
+        <local:TableTab x:Name="TableTabCustom" Visibility="Visible" Loaded="TableTabCustom_Loaded"/>
         <local:OrderTab x:Name="OrderTabCustom" Visibility="Hidden"/>
     </Grid>
 </UserControl>

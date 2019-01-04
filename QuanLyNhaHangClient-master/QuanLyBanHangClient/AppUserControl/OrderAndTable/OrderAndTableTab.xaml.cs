@@ -80,5 +80,9 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             }
         }
 
+        private void TableTabCustom_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

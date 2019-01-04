@@ -8,7 +8,6 @@
              mc:Ignorable="d" Width="800" Height="491">
     <Border BorderBrush="{StaticResource MainSolidColor}" CornerRadius="{StaticResource CornerRadiusValue}" Background="{StaticResource MainSolidColor}">
         <Grid>
-            <Image  Source="/Resource/Image/bg-1.png" OpacityMask="#2DFFFFFF" Margin="100" HorizontalAlignment="Left"/>
             <DockPanel>
                 <DockPanel.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -18,7 +17,7 @@
                 <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
                     <TextBlock.Background>
                         <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="#FFBC4444"/>
+                            <GradientStop Color="DarkGray"/>
                             <GradientStop Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Background>
@@ -38,16 +37,16 @@
                                     <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            
+
                             <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" BorderBrush="White" Margin="5,5,5,0">
                                 <Grid>
-                                    <TextBox x:Name="TextBoxSearch" Template="{StaticResource TextBoxRoundedTemplate}" Margin="60,0,30,0"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
+                                    <TextBox x:Name="TextBoxSearch" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,9,14,9"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
                                     <Image Source="/Resource/Image/search-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
                                 </Grid>
                             </Border>
                             <Button x:Name="BtnAddFood" Style="{StaticResource BtnInSideBarStyle}" Click="BtnAddFood_Click">
                                 <Grid x:Name="Category">
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Thêm món ăn</TextBlock> 
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Thêm món ăn</TextBlock>
                                     <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
                                     <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
@@ -115,10 +114,10 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="1.8*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Hình ảnh</TextBlock>
-                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Món ăn</TextBlock>
-                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Giá</TextBlock>
-                                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Loại</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Hình ảnh</TextBlock>
+                                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Món ăn</TextBlock>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Giá</TextBlock>
+                                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Loại</TextBlock>
                                 </Grid>
                                 <ListView x:Name="LVFood" Background="Transparent" BorderBrush="#00ABADB3" Margin="0,5,0,0">
                                     <ListView.ItemContainerStyle>

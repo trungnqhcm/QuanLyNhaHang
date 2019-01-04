@@ -9,7 +9,6 @@
              d:DesignHeight="491" d:DesignWidth="800" >
     <Border BorderBrush="{StaticResource MainSolidColor}" CornerRadius="{StaticResource CornerRadiusValue}" Background="{StaticResource MainSolidColor}">
         <Grid>
-            <Image  Source="/Resource/Image/bg-1.png" OpacityMask="#2DFFFFFF" Margin="100" HorizontalAlignment="Left"/>
             <DockPanel>
                 <DockPanel.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -19,7 +18,7 @@
                 <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
                     <TextBlock.Background>
                         <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="#FFBC4444"/>
+                            <GradientStop Color="DarkGray"/>
                             <GradientStop Offset="1"/>
                         </LinearGradientBrush>
                     </TextBlock.Background>
@@ -66,11 +65,11 @@
                         <DockPanel>
                             <Grid DockPanel.Dock="Bottom">
                                 <Border BorderBrush="{x:Null}" Height="50" >
-                                    <TextBlock x:Name="TextBlockTotalAllOrder" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FFF4FF00" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
+                                    <TextBlock x:Name="TextBlockTotalAllOrder" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
                                     Thành tiền: 270000 VND
                                     </TextBlock>
                                 </Border>
-                                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806" Click="BtnPay_Click" FontWeight="Bold" Margin="0,0,2,2">
+                                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnPay_Click" FontWeight="Bold" Margin="0,0,2,2" Foreground="White">
                                     Thanh toán
                                 </Button>
                             </Grid>

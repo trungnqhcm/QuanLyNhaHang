@@ -121,5 +121,10 @@ namespace QuanLyBanHangClient
             var window = new ChangeRestaurantInfoWindow();
             window.ShowDialog();
         }
+
+        private void FoodTab_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
