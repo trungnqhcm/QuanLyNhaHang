@@ -15,19 +15,19 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Nguyên liệu</TextBlock>
-                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Giá</TextBlock>
-                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Số lượng</TextBlock>
-                <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Tổng (VND)</TextBlock>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Nguyên liệu</TextBlock>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Giá</TextBlock>
+                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Số lượng</TextBlock>
+                <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Tổng (VND)</TextBlock>
             </Grid>
 
             <Grid DockPanel.Dock="Bottom">
                 <Border BorderBrush="White" Height="50" Padding="2" Margin="2" BorderThickness="1" >
-                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FFF4FF00" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
+                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
                                     Thành tiền: 270000 VND
                     </TextBlock>
                 </Border>
-                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="#FFFFF806" Click="BtnImport_Click" FontWeight="Bold" Margin="0,2,2,2">
+                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnImport_Click" FontWeight="Bold" Margin="0,2,2,2">
                     NHẬP >>
                 </Button>
             </Grid>

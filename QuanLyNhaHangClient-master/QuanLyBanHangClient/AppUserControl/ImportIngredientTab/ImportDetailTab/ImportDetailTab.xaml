@@ -36,10 +36,10 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Nguyên liệu</TextBlock>
-                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Giá</TextBlock>
-                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Số lượng</TextBlock>
-                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFF4FF00" FontWeight="Bold">Tổng (VND)</TextBlock>
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Nguyên liệu</TextBlock>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Giá</TextBlock>
+                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Số lượng</TextBlock>
+                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Tổng (VND)</TextBlock>
                 </Grid>
                 <ListView Grid.Row="4" x:Name="LVIngredient" Background="Transparent">
                     <ListView.ItemContainerStyle>

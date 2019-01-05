@@ -20,7 +20,7 @@
                 <RowDefinition Height="571*"/>
             </Grid.RowDefinitions>
             <DockPanel Margin="0,0,0,0.5" Grid.RowSpan="2">
-                <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" BorderThickness="1,1,1,1" BorderBrush="{StaticResource MainSolidColor}" Margin="4,4,4,4">
+                <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" BorderThickness="1,1,1,1" BorderBrush="White" Margin="4,4,4,4">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                         <Button x:Name="ButttonUser" Style="{StaticResource BtnBorderStyle}" Click="ButttonUser_Click">
                             <StackPanel Orientation="Horizontal">
@@ -48,7 +48,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="TabItem">
-                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="#FF7A3030" CornerRadius="4,4,0,0" Margin="2,0,0,-4">
+                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Black" CornerRadius="2,2,0,0" Margin="2,0,0,-4">
                                             <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -67,7 +67,7 @@
                                                 </Setter>
                                             </Trigger>
                                             <Trigger Property="IsSelected" Value="False">
-                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                                <Setter TargetName="Border" Property="Background" Value="White" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>

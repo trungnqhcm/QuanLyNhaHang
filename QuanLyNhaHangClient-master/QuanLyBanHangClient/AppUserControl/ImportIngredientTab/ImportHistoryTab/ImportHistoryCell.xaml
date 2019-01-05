@@ -6,19 +6,23 @@
              xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportHistoryTab"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="550" Width="Auto" Height="40">
-    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="#FFE48D8D" Margin="0,5" Padding="0">
+    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="DarkGray" Margin="0,5" Padding="0">
         <Grid x:Name="GridParent">
             <Grid.Resources>
                 <ImageSource x:Key="ImageGreenDot">/Resource/Image/Aqua-Ball-Green-icon.png</ImageSource>
                 <ImageSource x:Key="ImageGrayDot">/Resource/Image/Button-Blank-Gray-icon.png</ImageSource>
             </Grid.Resources>
-            <StackPanel Orientation="Horizontal">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="215*"/>
+                <ColumnDefinition Width="58*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="546" Grid.ColumnSpan="2">
                 <TextBlock x:Name="TextBlockBillId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" Margin="20,0,0,0" Width="180" TextDecorations="{x:Null}">Hóa đơn #53</TextBlock>
                 <Line X1="0" Y1="0" X2="0" Y2="50"  Stroke="White" StrokeThickness="3" />
                 <TextBlock x:Name="TextBlockTime" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Foreground="White" Margin="10,0,0,0">12/25/2017</TextBlock>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBlock x:Name="TextBlockMoney"  Text="5000000 VND" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#FFF4FF00" FontWeight="Bold" FontSize="18"></TextBlock>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <TextBlock x:Name="TextBlockMoney"  Text="5000000 VND" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="Black" FontWeight="Bold" FontSize="18"></TextBlock>
                 <Image Source="/Resource/Image/arrow-right.png" Margin="0,0,5,0" Height="20" />
             </StackPanel>
         </Grid>

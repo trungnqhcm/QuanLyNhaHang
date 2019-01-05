@@ -13,7 +13,7 @@
             <Border Width="550">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                        <GradientStop Color="#FFE4466D"/>
+                        <GradientStop Color="DarkGray"/>
                         <GradientStop Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
@@ -29,7 +29,6 @@
                 </Grid.ColumnDefinitions>
                 <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnAddFood" HorizontalAlignment="Left" Margin="0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="#00A9A9A9" Click="BtnAddFood_Click">
                     <StackPanel Orientation="Horizontal" Width="140">
-                        <Image Source="/Resource/Image/add-icon-5.png" Width="30" Margin="5,0,0,0"    />
                         <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline">Thêm món</TextBlock>
                     </StackPanel>
                 </Button>
@@ -38,7 +37,7 @@
                     <Button x:Name="BtnCancel" Style="{StaticResource BtnBorderStyle}" Click="BtnCancel_Click" Margin="20,0,0,-0.1" FontSize="11" Width="100" Height="35">Hủy bỏ</Button>
                 </StackPanel>
                 <Border Grid.Column="2" BorderBrush="{x:Null}" Height="26"  >
-                    <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="#FFEAD732" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
+                    <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="Black" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
                 </Border>
                 <Border Grid.Column="1" x:Name="AddFoodGroup" Background="#FF7D4D4D" Margin="10,0,1,0" Height="40" Visibility="Hidden" >
                     <StackPanel Orientation="Horizontal">

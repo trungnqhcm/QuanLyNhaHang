@@ -34,7 +34,7 @@ namespace QuanLyBanHangClient
         public MainWindow() {
             InitializeComponent();
             RequestManager.getInstance().LoadingAnm = loadingAnim;
-            //reloadAllInfo();
+            reloadAllInfo();
         }
         void reloadAllInfo() {
             isReloading = true;
