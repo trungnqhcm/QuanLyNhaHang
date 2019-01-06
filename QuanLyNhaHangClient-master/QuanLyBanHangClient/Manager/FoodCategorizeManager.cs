@@ -16,7 +16,7 @@ namespace QuanLyBanHangClient.Manager {
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/foodcategory";
+        private string API_CONTROLLER = "/api/foodcategories";
         private Dictionary<int, FoodCategorize> _foodCategorizeList;
         public Dictionary<int, FoodCategorize> FoodCategorizeList { get { return _foodCategorizeList; } }
         private FoodCategorizeManager() {

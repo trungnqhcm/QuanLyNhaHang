@@ -17,7 +17,7 @@ namespace QuanLyBanHangClient.Manager
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/ingredient";
+        private string API_CONTROLLER = "/api/ingredients";
         private Dictionary<int, Ingredient> _ingredientList = null;
         public Dictionary<int, Ingredient> IngredientList { get { return _ingredientList; } }
         private IngredientManager() {

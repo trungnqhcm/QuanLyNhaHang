@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QuanLyBanHangAPI.model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -65,25 +66,26 @@ namespace QuanLyBanHangClient.Manager
             return Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.ApplicationData), "userData.binary");
         }
-        public async Task getAccessTokenAsync(string userName, string password, Action<UserInfo> cbSuccess, Action<HttpStatusCode> cbFail) {
+        public async Task getAccessTokenAsync(string userName, string password, Action<User> cbSuccess, Action<HttpStatusCode> cbFail) {
             Action<string> cbSuccessSent =
                     delegate (string result) {
-                        UserInfo userInfoFromSV = JsonConvert.DeserializeObject<UserInfo>(result);
-                        if (_userInfo != null) {
-                            _userInfo.expiredTime = userInfoFromSV.expiredTime;
-                            _userInfo.token = userInfoFromSV.token;
-                            _userInfo.type = userInfoFromSV.type;
-                            save(_userInfo);
-                        }
-                        cbSuccess?.Invoke(_userInfo);
+                        User userInfoFromSV = JsonConvert.DeserializeObject<User>(result);
+                        //if (_userInfo != null) {
+                        //    _userInfo.expiredTime = userInfoFromSV.expiredTime;
+                        //    _userInfo.token = userInfoFromSV.token;
+                        //    _userInfo.type = userInfoFromSV.type;
+                        //    save(_userInfo);
+                        //}
+                        cbSuccess?.Invoke(userInfoFromSV);
                     };
-            await RequestManager.getInstance().getAccessTokenAsync(
+            await RequestManager.getInstance().Login(
                 userName,
                 password,
                 cbSuccessSent,
                 cbFail
                 );
         }
+
         public void resetLoginInfo() {
             if(_userInfo != null) {
                 _userInfo.expiredTime = 0;

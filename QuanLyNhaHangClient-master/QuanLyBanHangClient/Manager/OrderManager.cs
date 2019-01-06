@@ -23,7 +23,7 @@ namespace QuanLyBanHangClient.Manager
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/order";
+        private string API_CONTROLLER = "/api/orders";
         private Dictionary<int, Order> _orderList;
         public Dictionary<int, Order> OrderList { get { return _orderList; } }
         private OrderManager() {
@@ -73,12 +73,13 @@ namespace QuanLyBanHangClient.Manager
                 cbSuccessSent?.Invoke(networkResponse, newOrderId);
             };
             var myObject = (dynamic)new JObject();
-            myObject.FoodWithOrder = (dynamic)new JArray();
+            myObject.FoodWithOrders = (dynamic)new JArray();
             foreach (FoodWithOrder foodWithOrder in listFoodWithOrder) {
-                myObject.FoodWithOrder.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
+                myObject.FoodWithOrders.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
             }
+            myObject.TableId = tableId;
             await RequestManager.getInstance().postAsyncJson(
-                API_CONTROLLER + "/new?tableId=" + tableId.ToString(),
+                API_CONTROLLER + "/new",
                 myObject,
                 newCBSuccessSent,
                 cbError

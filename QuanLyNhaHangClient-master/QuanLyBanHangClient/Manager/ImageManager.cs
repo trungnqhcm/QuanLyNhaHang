@@ -17,7 +17,7 @@ namespace QuanLyBanHangClient.Manager {
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/image";
+        private string API_CONTROLLER = "/api/images";
         private string _imageLocalPath = "image/";
         private string _fullImagePath = "";
 

@@ -1,5 +1,6 @@
 ﻿using LoadingPanelSample.Controls;
 using Newtonsoft.Json.Linq;
+using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.Manager;
 using System;
 using System.Collections.Generic;
@@ -49,54 +50,54 @@ namespace QuanLyBanHangClient.WindowControl
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e) {
-            //if (sender != null)
-            //{
-            //    if (string.IsNullOrEmpty(TextBoxUserName.Text))
-            //    {
-            //        WindownsManager.getInstance().showMessageBoxConfirm("Chưa nhập tài khoản", "Đăng nhập thất bại");
-            //        return;
-            //    }
-            //    else if (string.IsNullOrEmpty(PasswordBoxPassword.Password))
-            //    {
-            //        WindownsManager.getInstance().showMessageBoxConfirm("Chưa nhập mật khẩu", "Đăng nhập thất bại");
-            //        return;
-            //    }
-            //}
-            //loadingAnim.Visibility = Visibility.Visible;
-            //var userInfoManager = UserInfoManager.getInstance();
-            //Action<UserInfo> cbSuccess =
-            //        delegate (UserInfo result)
-            //        {
-            //            userInfoManager.setIsKeepSignedIn(CheckBoxKeepLogin.IsChecked, false);
-            //            userInfoManager.setIsRememberPass(CheckBoxRememberPass.IsChecked, false);
-            //            userInfoManager.setPreviousPass(CheckBoxRememberPass.IsChecked == false ? "" : PasswordBoxPassword.Password, false);
-            //            userInfoManager.setPreviousAcc(TextBoxUserName.Text);
+            if (sender != null)
+            {
+                if (string.IsNullOrEmpty(TextBoxUserName.Text))
+                {
+                    WindownsManager.getInstance().showMessageBoxConfirm("Chưa nhập tài khoản", "Đăng nhập thất bại");
+                    return;
+                }
+                else if (string.IsNullOrEmpty(PasswordBoxPassword.Password))
+                {
+                    WindownsManager.getInstance().showMessageBoxConfirm("Chưa nhập mật khẩu", "Đăng nhập thất bại");
+                    return;
+                }
+            }
+            loadingAnim.Visibility = Visibility.Visible;
+            var userInfoManager = UserInfoManager.getInstance();
+            Action<User> cbSuccess =
+                    delegate (User result)
+                    {
+                        userInfoManager.setIsKeepSignedIn(CheckBoxKeepLogin.IsChecked, false);
+                        userInfoManager.setIsRememberPass(CheckBoxRememberPass.IsChecked, false);
+                        userInfoManager.setPreviousPass(CheckBoxRememberPass.IsChecked == false ? "" : PasswordBoxPassword.Password, false);
+                        userInfoManager.setPreviousAcc(TextBoxUserName.Text);
 
-            //            MainWindow mainWin = new MainWindow();
-            //            mainWin.Show();
+                        MainWindow mainWin = new MainWindow();
+                        mainWin.Show();
 
-            //            Close();
-            //        };
-            //Action<HttpStatusCode> cbFail = delegate (HttpStatusCode code)
-            //{
-            //    if (code == HttpStatusCode.Unauthorized)
-            //    {
-            //        WindownsManager.getInstance().showMessageBoxConfirm("Sai tài khoản hoặc mật khẩu", "Đăng nhập thất bại");
-            //    }
-            //    else
-            //    {
-            //        WindownsManager.getInstance().showMessageBoxErrorNetwork();
-            //    }
-            //    loadingAnim.Visibility = Visibility.Hidden;
-            //};
-            //userInfoManager.getAccessTokenAsync(
-            //    TextBoxUserName.Text,
-            //    PasswordBoxPassword.Password,
-            //    cbSuccess,
-            //    cbFail
-            //    );
-            MainWindow mainWin = new MainWindow();
-            mainWin.Show();
+                        Close();
+                    };
+            Action<HttpStatusCode> cbFail = delegate (HttpStatusCode code)
+            {
+                if (code == HttpStatusCode.Unauthorized)
+                {
+                    WindownsManager.getInstance().showMessageBoxConfirm("Sai tài khoản hoặc mật khẩu", "Đăng nhập thất bại");
+                }
+                else
+                {
+                    WindownsManager.getInstance().showMessageBoxErrorNetwork();
+                }
+                loadingAnim.Visibility = Visibility.Hidden;
+            };
+            userInfoManager.getAccessTokenAsync(
+                TextBoxUserName.Text,
+                PasswordBoxPassword.Password,
+                cbSuccess,
+                cbFail
+                );
+            //MainWindow mainWin = new MainWindow();
+            //mainWin.Show();
         }
 
         private void CheckBoxRememberPass_Checked(object sender, RoutedEventArgs e) {

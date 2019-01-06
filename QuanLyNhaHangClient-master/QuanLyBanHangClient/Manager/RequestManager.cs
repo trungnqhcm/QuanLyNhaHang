@@ -45,7 +45,7 @@ namespace QuanLyBanHangClient.Manager {
 
         private RequestManager() {
             client = new HttpClient();
-            //client.BaseAddress = new Uri(domainName);
+            client.BaseAddress = new Uri(domainName);
         }
         private async Task request(
                     RequestType requestType,
@@ -55,7 +55,7 @@ namespace QuanLyBanHangClient.Manager {
                     Action<string> cbError = null
             ) {
             try {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(UserInfoManager.getInstance().userInfo.type, UserInfoManager.getInstance().userInfo.token);
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(UserInfoManager.getInstance().userInfo.type, UserInfoManager.getInstance().userInfo.token);
 
                 var content = new FormUrlEncodedContent(keysValue);
                 HttpResponseMessage result;
@@ -77,13 +77,19 @@ namespace QuanLyBanHangClient.Manager {
                     string resultContent = await result.Content.ReadAsStringAsync();
 
                     var jsonObject = (JObject)JsonConvert.DeserializeObject(resultContent);
-                    var networkResult = new NetworkResponse() {
+                    var networkResult = new NetworkResponse()
+                    {
                         Successful = jsonObject["Successful"].Value<bool>(),
                         Data = jsonObject["Data"] as JContainer,
-                        ErrorDescription = jsonObject["ErrorDescription"].Value<string>(),
-                        ErrorMessage = jsonObject["ErrorMessage"].Value<string>(),
-                        ErrorCode = jsonObject["ErrorCode"].Value<string>()
+                        //ErrorDescription = jsonObject["ErrorDescription"].Value<string>(),
+                        //ErrorMessage = jsonObject["ErrorMessage"].Value<string>(),
+                        //ErrorCode = jsonObject["ErrorCode"].Value<string>()
                     };
+                    //var networkResult = new NetworkResponse()
+                    //{
+                    //    Successful = true,
+                    //    Data = jsonObject,
+                    //};
                     cbSuccessSent?.Invoke(networkResult);
                 } else {
                     cbError?.Invoke("err:" + result.StatusCode.ToString());
@@ -254,6 +260,34 @@ namespace QuanLyBanHangClient.Manager {
                 cbFail?.Invoke(HttpStatusCode.NotFound);
             }
         }
+
+        async public Task Login(string userName, string password, Action<string> cbSuccess, Action<HttpStatusCode> cbFail)
+        {
+            try
+            {
+                KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+                new KeyValuePair<string, string>("Username", userName),
+                new KeyValuePair<string, string>("Password", password)
+                };
+                var content = new FormUrlEncodedContent(keys);
+                HttpResponseMessage result = await client.PostAsync("/api/users/login", content);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    string resultContent = await result.Content.ReadAsStringAsync();
+                    cbSuccess?.Invoke(resultContent);
+                }
+                else
+                {
+                    cbFail?.Invoke(result.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+                cbFail?.Invoke(HttpStatusCode.NotFound);
+            }
+        }    
+
         async public Task UploadImage(
             string requestUri, 
             byte[] ImageData,

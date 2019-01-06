@@ -17,7 +17,7 @@ namespace QuanLyBanHangClient.Manager
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/unit";
+        private string API_CONTROLLER = "/api/units";
         private Dictionary<int, Unit> _unitList;
         public Dictionary<int, Unit> UnitList { get { return _unitList; } }
         private UnitManager() {

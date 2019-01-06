@@ -17,7 +17,7 @@ namespace QuanLyBanHangClient.Manager
             }
             return _instance;
         }
-        private string API_CONTROLLER = "/api/table";
+        private string API_CONTROLLER = "/api/tables";
         private Dictionary<int, Table> _tableList;
         public Dictionary<int, Table> TableList { get { return _tableList; } }
         private TableManager() {
