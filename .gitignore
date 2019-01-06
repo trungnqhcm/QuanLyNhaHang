@@ -1,1 +1,16 @@
 /.vs
+
+/obj
+obj
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/itextsharp.xml
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/System.Windows.Controls.DataVisualization.Toolkit.xml
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/System.Windows.Controls.DataVisualization.Toolkit.dll
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/QuanLyBanHangClient.pdb
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/QuanLyBanHangClient.exe.config
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/QuanLyBanHangClient.exe
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/Newtonsoft.Json.xml
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/Newtonsoft.Json.dll
+QuanLyNhaHangClient-master/QuanLyBanHangClient/bin/Debug/itextsharp.dll
+QuanLyNhaHangClient-master/QuanLyBanHangClient/QuanLyBanHangClient.csproj.user
+QuanLyNhaHangClient-master/.vs/QuanLyBanHangClient/v15/Server/sqlite3/storage.ide
+QuanLyNhaHangClient-master/.vs/QuanLyBanHangClient/v15/.suo
