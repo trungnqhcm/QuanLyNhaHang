@@ -115,18 +115,22 @@ namespace QuanLyBanHangClient.Manager {
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };
-            List<KeyValuePair<string, string>> keys = new List<KeyValuePair<string, string>>() {
-                new KeyValuePair<string, string>("Name", name),
-                new KeyValuePair<string, string>("IngredientWithFoods", JsonConvert.SerializeObject(ingredientWithFoods)),
-                new KeyValuePair<string, string>("Price", price.ToString()),
-                new KeyValuePair<string, string>("FoodCategorizeId", foodCategorizeId.ToString())
-            };
-            if(imageId > -1) {
-                keys.Add(new KeyValuePair<string, string>("ImageId", imageId.ToString()));
+            var jObject = (dynamic)new JObject();
+            jObject.Name = name;
+            jObject.Price = price;
+            jObject.FoodCategoryId = foodCategorizeId;
+            jObject.IngredientWithFoods = (dynamic)new JArray();
+            foreach(var t in ingredientWithFoods)
+            {
+                jObject.IngredientWithFoods.Add(JsonConvert.SerializeObject(t));
             }
-            await RequestManager.getInstance().putAsync(
+           
+            //if(imageId > -1) {
+            //    keys.Add(new KeyValuePair<string, string>("ImageId", imageId.ToString()));
+            //}
+            await RequestManager.getInstance().postAsyncJson(
                 API_CONTROLLER + "/" + foodId,
-                keys.ToArray(),
+                jObject,
                 newCBSuccessSent,
                 cbError
                 );

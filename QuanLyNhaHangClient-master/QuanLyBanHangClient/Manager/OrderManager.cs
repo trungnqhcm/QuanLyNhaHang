@@ -162,12 +162,12 @@ namespace QuanLyBanHangClient.Manager
             Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
                 if (networkResponse.Successful)
                 {
-                    Order orderCreated = JsonConvert.DeserializeObject<Order>(networkResponse.Data.ToString());
-                    if (orderCreated.FoodWithOrders == null)
-                    {
-                        orderCreated.FoodWithOrders = new List<FoodWithOrder>();
-                    }
-                    _orderList[orderCreated.OrderId] = orderCreated;
+                    //Order orderCreated = JsonConvert.DeserializeObject<Order>(networkResponse.Data.ToString());
+                    //if (orderCreated.FoodWithOrders == null)
+                    //{
+                    //    orderCreated.FoodWithOrders = new List<FoodWithOrder>();
+                    //}
+                    //_orderList[orderCreated.OrderId] = orderCreated;
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };

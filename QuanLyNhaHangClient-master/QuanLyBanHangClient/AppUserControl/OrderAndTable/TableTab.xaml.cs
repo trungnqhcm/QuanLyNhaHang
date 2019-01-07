@@ -54,18 +54,18 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
            
             var tbinfo = ((TableInfo)LVTable.SelectedItem).TableData;
             var enable = true;
-            foreach (var order in OrderManager.getInstance().OrderList)
-            {
-                foreach(var two in order.Value.TableWithOrders)
-                {
-                    if(two.TableId == tbinfo.Id)
-                    {
-                        enable = false;
-                        break;
-                    }
-                }
-                if (!enable) break;
-            }
+            //foreach (var order in OrderManager.getInstance().OrderList)
+            //{
+            //    foreach(var two in order.Value.TableWithOrders)
+            //    {
+            //        if(two.TableId == tbinfo.Id)
+            //        {
+            //            enable = false;
+            //            break;
+            //        }
+            //    }
+            //    if (!enable) break;
+            //}
             BtnMerge.IsEnabled = enable;
             TextBoxCurrentTableId.Text = tbinfo.TableId.ToString();
         }
@@ -211,7 +211,9 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
                         }
                         else
                         {
-                            reloadLVTable();
+                            orderAndTableTab.reloadOrderUI(true, delegate () {
+                                orderAndTableTab.reloadTableUI(true);
+                            });
                         }
                         RequestManager.getInstance().hideLoading();
                     };
