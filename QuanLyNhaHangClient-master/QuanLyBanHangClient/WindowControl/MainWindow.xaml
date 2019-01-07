@@ -20,7 +20,7 @@
                 <RowDefinition Height="571*"/>
             </Grid.RowDefinitions>
             <DockPanel Margin="0,0,0,0.5" Grid.RowSpan="2">
-                <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" BorderThickness="1,1,1,1" BorderBrush="White" Margin="4,4,4,4">
+                <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" Margin="4,4,4,4">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                         <Button x:Name="ButttonUser" Style="{StaticResource BtnBorderStyle}" Click="ButttonUser_Click">
                             <StackPanel Orientation="Horizontal">
@@ -33,7 +33,7 @@
                         <Button x:Name="BtnInfo" Style="{StaticResource BtnBorderStyle}" Width="150" Margin="20,0,0,0" Click="BtnInfo_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resource/Image/info-icon.png" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20"/>
-                                <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="Thông tin"/></TextBlock>
+                                <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="Thông tin nhà hàng"/></TextBlock>
                             </StackPanel>
                         </Button>
                         <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click">Đăng xuất</Button>

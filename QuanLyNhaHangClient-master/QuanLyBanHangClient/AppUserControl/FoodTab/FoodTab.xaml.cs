@@ -167,36 +167,13 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                     if (entry.Value != null) {
                         var foodCell = new FoodCell(entry.Value, this);
                         LVFood.Items.Add(foodCell);
-
-                        var imageId = entry.Value.ImageId ?? default(int);
-                        if (entry.Value.ImageId != null
-                            && imageId >= 0) {
-                            if (ImageManager.getInstance().checkImageExistLocal(imageId)) {
-                                ImageManager.getInstance().loadImage(imageId, delegate (byte[] imageData) {
-                                    foodCell.setImageFood(UtilFuction.ByteToImage(imageData));
-                                });
-                            } else {
-                                ImageManager.getInstance().loadImage(imageId, delegate (byte[] imageData) {
-                                    checkAndSetImageForFoodCell(entry.Value.FoodId, imageId, UtilFuction.ByteToImage(imageData));
-                                });
-                            }
-                        }
                     }
                 }
                 cbAfterReload?.Invoke();
             }
 
         }
-        private void checkAndSetImageForFoodCell(int foodId, int imageId, System.Drawing.Image image) {
-            foreach(var foodCell in LVFood.Items.OfType<FoodCell>()) {
-                if(foodCell != null
-                    && foodCell.FoodData != null
-                    && foodCell.FoodData.FoodId == foodId
-                    && foodCell.FoodData.ImageId == imageId) {
-                    foodCell.setImageFood(image);
-                }
-            }
-        }
+
         public void reloadCategoryTableUI(bool isReloadFromServer = false, Action cbAfterReload = null) {
             if (isReloadFromServer) {
                 RequestManager.getInstance().showLoading();
