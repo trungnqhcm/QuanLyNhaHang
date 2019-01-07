@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -236,23 +237,28 @@ namespace QuanLyBanHangClient.Manager
                 orderStr += "\n" + "Thời điểm: " + DateTime.Now.ToString("H:mm:ss  dd/MM/yyyy");
 
                 orderStr += "\n\n" + "             Hóa đơn bán hàng ";
+                var index = 1;
                 foreach (FoodWithOrder foodWithOrder in order.FoodWithOrders) {
-                    string strFoodName = foodWithOrder.Food.FoodId + "-" + foodWithOrder.Food.Name;
+                    string strFoodName = index + "-" + foodWithOrder.Food.Name;
                     string strQuantity = foodWithOrder.Quantities.ToString();
                     string strFoodPrice = "x  " + UtilFuction.formatMoney(foodWithOrder.Food.Price);
                     orderStr += "\n"
                         + strFoodName + UtilFuction.getSpacesFromQuantityChar(50, strFoodName)
                         + strQuantity + UtilFuction.getSpacesFromQuantityChar(10, strQuantity)
                         + strFoodPrice + UtilFuction.getSpacesFromQuantityChar(10, strFoodPrice);
+                    index++;
                 }
+                orderStr += "\n ========================================================================";
                 string totalStr = "TỔNG CỘNG: ";
                 orderStr += "\n\n" + totalStr + UtilFuction.getSpacesFromQuantityChar(70, totalStr) + UtilFuction.formatMoney(order.BillMoney);
 
-                orderStr += "\n\n\n Nếu quý khách có nhu cầu xuất hóa đơn, \n xin liên hệ với chúng tôi trong ngày.";
+                //orderStr += "\n\n\n Nếu quý khách có nhu cầu xuất hóa đơn, \n xin liên hệ với chúng tôi trong ngày.";
 
+                string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 iTextSharp.text.Font font = null;
                 try {
-                    var vini = BaseFont.CreateFont("c:/windows/fonts/aachenb.ttf", BaseFont.IDENTITY_H, true);
+                    string fontPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, "Resource/Font/VT323-Regular.ttf");
+                    var vini = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, true);
                     font = new iTextSharp.text.Font(vini, 14);
                 } catch (Exception ex) {
 
@@ -266,6 +272,7 @@ namespace QuanLyBanHangClient.Manager
                 document.Close();
                 fs.Close();
             } catch(Exception ex) {
+                Console.Write(ex.Message);
             }
         }
     }
