@@ -99,6 +99,8 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
             BtnAccept.Visibility = Visibility.Hidden;
             BtnCancel.Visibility = Visibility.Hidden;
 
+            ComboBoxSelectFood.clear();
+
             foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                 if (entry.Value != null) {
                     bool isContinue = false;
@@ -134,6 +136,9 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 TextBlockHeader.Text += ("  -  " + order.CreatedDate.ToShortDateString()) + "  -  " + UtilFuction.formatMoney(billMoney) + " VND";
             }
         }
+
+
+
         public void checkAndAddFoodIdToComboBox(int foodId) {
             foreach(ComboBoxItem comboData in ComboBoxSelectFood.ComboBoxData.Items) {
                 if((int)comboData.Tag == foodId) {
@@ -165,17 +170,16 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
         public void onEditOrderWithFood(
             OrderWithFood orderWithFood
             ) {
-            BtnAccept.Visibility = Visibility.Visible;
-            BtnCancel.Visibility = Visibility.Visible;
+            updateAcceptButtonState();
         }
         public void onRemoveOrderWithFood(
             OrderWithFood orderWithFood
             ) {
-            BtnAccept.Visibility = Visibility.Visible;
-            BtnCancel.Visibility = Visibility.Visible;
+            
 
             listViewOrderWithFood.Items.Remove(orderWithFood);
             checkAndAddFoodIdToComboBox(orderWithFood._foodWithOrder.FoodId);
+            updateAcceptButtonState();
         }
         public void onChangeMoney() {
             decimal totalBill = 0;
@@ -193,8 +197,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
 
         private void BtnAddFood_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Visible;
-            BtnAccept.Opacity = 0;
-            BtnCancel.Opacity = 0;
+            BtnAddFood.Visibility = Visibility.Hidden;
         }
         private void BtnAccept_Click(object sender, RoutedEventArgs e) {
             updateFoodWithOrderAndReloadUI();
@@ -213,21 +216,55 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 Quantities = quantity
             }, this));
             checkAndRemoveFoodIdToComboBox(foodId);
-            BtnAccept.Visibility = Visibility.Visible;
-            BtnCancel.Visibility = Visibility.Visible;
+            updateAcceptButtonState();
             onChangeMoney();
         }
 
         private void BtnConfirmExit_Click(object sender, RoutedEventArgs e) {
             AddFoodGroup.Visibility = Visibility.Hidden;
-            BtnAccept.Opacity = 1;
-            BtnCancel.Opacity = 1;
+            BtnAddFood.Visibility = Visibility.Visible;
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e) {
             reloadAllUI();
             BtnAccept.Visibility = Visibility.Hidden;
             BtnCancel.Visibility = Visibility.Hidden;
+        }
+
+        public void updateAcceptButtonState()
+        {
+            if (isFoodChanged())
+            {
+                BtnAccept.Visibility = Visibility.Visible;
+                BtnCancel.Visibility = Visibility.Visible;
+            } else
+            {
+                BtnAccept.Visibility = Visibility.Hidden;
+                BtnCancel.Visibility = Visibility.Hidden;
+            }
+        }
+
+        Boolean isFoodChanged()
+        {
+            var order = OrderManager.getInstance().OrderList[OrderId];
+
+            var currentList = new List<FoodWithOrder>();
+            foreach (OrderWithFood orderWithFood in listViewOrderWithFood.Items.OfType<OrderWithFood>())
+            {
+                currentList.Add(orderWithFood._foodWithOrder);
+            }
+
+            if (order.FoodWithOrders.Count != currentList.Count) { return true; }
+
+            var index = 0;
+            foreach (FoodWithOrder foodWithOrder in order.FoodWithOrders)
+            {
+                if (foodWithOrder.FoodId != currentList[index].FoodId) { return true; }
+                if (foodWithOrder.Quantities != currentList[index].Quantities) { return true; }
+
+                index++;
+            }
+            return false;
         }
     }
 }

@@ -75,15 +75,13 @@
                         <DockPanel>
                             <Grid Margin="5" DockPanel.Dock="Top">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="1.8*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">Hình ảnh</TextBlock>
-                                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">Món ăn</TextBlock>
-                                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">Bàn</TextBlock>
-                                <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold">Trạng thái</TextBlock>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Món ăn</TextBlock>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Bàn</TextBlock>
+                                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Trạng thái</TextBlock>
                             </Grid>
                                 <ListView x:Name="LVPrepareFood" Background="Transparent" BorderBrush="#00ABADB3" Margin="0,5,0,0">
                                     <ListView.ItemContainerStyle>

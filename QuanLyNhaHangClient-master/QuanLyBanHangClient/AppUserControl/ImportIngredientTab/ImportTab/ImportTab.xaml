@@ -8,58 +8,28 @@
              d:DesignHeight="400" d:DesignWidth="800">
     <Border BorderThickness="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
         <DockPanel>
-            <Grid Margin="5" DockPanel.Dock="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Nguyên liệu</TextBlock>
-                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Giá</TextBlock>
-                <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Số lượng</TextBlock>
-                <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontWeight="Bold">Tổng (VND)</TextBlock>
-            </Grid>
 
-            <Grid DockPanel.Dock="Bottom">
-                <Border BorderBrush="White" Height="50" Padding="2" Margin="2" BorderThickness="1" >
-                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
-                                    Thành tiền: 270000 VND
-                    </TextBlock>
-                </Border>
-                <Button x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="White" Click="BtnImport_Click" FontWeight="Bold" Margin="0,2,2,2">
+            <Grid Margin="18" DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="212*" />
+                    <ColumnDefinition Width="98*" />
+                    <ColumnDefinition Width="83*" />
+                    <ColumnDefinition Width="367*" />
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="ComboBoxIngredient" SelectionChanged="ComboBoxIngredient_SelectionChanged" FontSize="16" Margin="0,0,9,-0.5" VerticalAlignment="Center"/>
+                <TextBox  Grid.Column="1" x:Name="TextBoxQuantity" Margin="11,0,27,-1" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxQuantity_TextChanged" FontSize="16" VerticalAlignment="Center" />
+                <TextBlock x:Name="TextBlockUnit" VerticalAlignment="Bottom" Margin="76,0,30,-14.5" Foreground="Black" Height="38" Grid.Column="1" Text="..." FontSize="16" Grid.ColumnSpan="2"/>
+
+                <Button x:Name="BtnImport" Cursor="Hand" Background="White" Click="BtnImport_Click" FontWeight="Bold" Margin="47,0,195,0.5" Grid.Column="3" Visibility="Visible" VerticalAlignment="Center">
                     NHẬP
                 </Button>
-            </Grid>
-            
-            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
-                <Button x:Name="BtnAdd" Width="150" Click="BtnAdd_Click" Margin="0,0,50,0">
-                    Thêm
-                </Button>
-                <Button x:Name="BtnClear" Width="200" Margin="50,0,0,0" Click="BtnClear_Click">
-                    Xóa hết
-                </Button>
-            </StackPanel>
-            <Grid Margin="5" DockPanel.Dock="Bottom">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ComboBox x:Name="ComboBoxIngredient" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
-                <StackPanel Grid.Column="1"  Orientation="Horizontal" Margin="40,0,0,0">
-                    <TextBox  x:Name="TextBoxPrice" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxPrice_TextChanged" ></TextBox>
-                    <TextBlock x:Name="TextBlockUnit" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Margin="10,0,0,0" Foreground="White"></TextBlock>
-                </StackPanel>
-                <TextBox  Grid.Column="2" x:Name="TextBoxQuantity" Margin="0,0,10,0" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxQuantity_TextChanged" ></TextBox>
-                <TextBox  Grid.Column="3" x:Name="TextBoxTotal"  Margin="10,0,0,0" IsReadOnly="True"></TextBox>
             </Grid>
             <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="16,16,16,16" DockPanel.Dock="Bottom" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>
                     <DataGridTextColumn Header="Đơn vị" Binding="{Binding UnitName}" Width="*"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding UnitName}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

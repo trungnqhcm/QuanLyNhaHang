@@ -54,7 +54,7 @@
                         <DockPanel>
                             <Grid DockPanel.Dock="Bottom">
                                 <Border BorderBrush="WhiteSmoke" Height="50" >
-                                    <TextBlock x:Name="TextBlockTotalAllOrder" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="{x:Null}">
+                                    <TextBlock x:Name="TextBlockTotalAllOrder" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FF6F00" FontSize="20" FontWeight="Bold" TextDecorations="{x:Null}">
                                     Thành tiền: 270000 VND
                                     </TextBlock>
                                 </Border>

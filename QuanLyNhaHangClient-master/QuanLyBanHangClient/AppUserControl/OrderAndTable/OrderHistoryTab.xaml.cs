@@ -34,7 +34,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
                     var checkBox = new CheckBox();
                     checkBox.Content = "Bàn số " + entry.Value.TableId.ToString();
                     checkBox.FontSize = 11;
-                    checkBox.Foreground = new SolidColorBrush(Colors.White);
+                    checkBox.Foreground = new SolidColorBrush(Colors.Black);
                     checkBox.Tag = entry.Value.TableId;
                     checkBox.IsChecked = true;
                     LVFilterTable.Items.Add(checkBox);

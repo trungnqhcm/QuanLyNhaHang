@@ -16,15 +16,13 @@
         <Border BorderThickness="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="1.8*"/>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" HorizontalAlignment="Left" Margin="8,8,0,8" Width="40" Height="40" Stretch="Fill"/>
-                <TextBlock x:Name="TextBlockName" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Margin="10,0,0,0" Text="3 - Bún đậu" FontSize="15" Width="200" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Cursor="Hand" />
-                <TextBlock x:Name="TextBlockTableId" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="1" TextDecorations="{x:Null}" Width="70" TextAlignment="Center" />
-                <DockPanel Grid.Column="3">
+                <TextBlock x:Name="TextBlockName" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Margin="10,0,0,0" Text="3 - Bún đậu" FontSize="15" Width="200" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" TextDecorations="Underline" Cursor="Hand" />
+                <TextBlock x:Name="TextBlockTableId" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0" Text="1" TextDecorations="{x:Null}" Width="70" TextAlignment="Center" />
+                <DockPanel Grid.Column="2">
                     <Image x:Name="ImageState" Source="{StaticResource ImageSourceGreenDot}" HorizontalAlignment="Left" Margin="0" Width="15" Height="15" Stretch="Fill" Visibility="Collapsed"/>
                     <ComboBox x:Name="ComboBoxState"  Style="{StaticResource ComboBoxRounded}" Margin="5" SelectedIndex="0" SelectionChanged="ComboBoxState_SelectionChanged" MinWidth="100" Width="140" HorizontalContentAlignment="Stretch">
 

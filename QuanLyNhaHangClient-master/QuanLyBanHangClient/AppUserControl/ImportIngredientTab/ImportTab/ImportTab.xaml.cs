@@ -30,14 +30,17 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             reloadTotalBill();
         }
         public void setupComboBoxIngredient() {
-            if(ComboBoxIngredient.Items.Count > 0) {
+            if (ComboBoxIngredient.Items.Count > 0)
+            {
                 return;
             }
             ComboBoxIngredient.Items.Clear();
 
             var ingredientsName = new List<ComboBoxItem>();
-            foreach (KeyValuePair<int, Ingredient> entry in IngredientManager.getInstance().IngredientList) {
-                if (entry.Value != null) {
+            foreach (KeyValuePair<int, Ingredient> entry in IngredientManager.getInstance().IngredientList)
+            {
+                if (entry.Value != null)
+                {
                     var item = new ComboBoxItem();
                     item.Tag = entry.Key;
                     item.Content = entry.Value.Name;
@@ -58,17 +61,18 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
                 return;
             }
             var unitId = IngredientManager.getInstance().IngredientList[(int)((ComboBoxItem)ComboBoxIngredient.SelectedItem).Tag].UnitId;
-            TextBlockUnit.Text = " / 1 " + UnitManager.getInstance().UnitList[unitId].Name;
+            var unitName = UnitManager.getInstance().UnitList[unitId].Name;
+            TextBlockUnit.Text = unitName;
         }
         private void checkAndReloadTotal() {
-            decimal price = 0;
-            decimal quantity = 0;
-            if (!decimal.TryParse(TextBoxPrice.Text, out price)
-                || !decimal.TryParse(TextBoxQuantity.Text, out quantity)) {
-                TextBoxTotal.Text = "0";
-                return;
-            }
-            TextBoxTotal.Text = UtilFuction.formatMoney(price * quantity);
+            //decimal price = 0;
+            //decimal quantity = 0;
+            //if (!decimal.TryParse(TextBoxPrice.Text, out price)
+            //    || !decimal.TryParse(TextBoxQuantity.Text, out quantity)) {
+            //    TextBoxTotal.Text = "0";
+            //    return;
+            //}
+            //TextBoxTotal.Text = UtilFuction.formatMoney(price * quantity);
         }
         private void reloadTotalBill() {
             //decimal totalBill = 0;
@@ -80,11 +84,11 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             //TextBlockTotal.Text = "Tổng cộng: " + UtilFuction.formatMoney(totalBill) + " VND";
         }
         private void TextBoxPrice_TextChanged(object sender, TextChangedEventArgs e) {
-            checkAndReloadTotal();
+            //checkAndReloadTotal();
         }
 
         private void TextBoxQuantity_TextChanged(object sender, TextChangedEventArgs e) {
-            checkAndReloadTotal();
+            //checkAndReloadTotal();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e) {

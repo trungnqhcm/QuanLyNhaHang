@@ -53,7 +53,7 @@
                                     <CheckBox x:Name="CheckBoxFilterDate" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="11"  Unchecked="CheckBoxFilterDate_Unchecked" Checked="CheckBoxFilterDate_Checked" >
                                         <Underline>Lọc theo ngày</Underline>
                                     </CheckBox>
-                                    <StackPanel x:Name="FilterDateGroup" Visibility="Hidden">
+                                    <StackPanel x:Name="FilterDateGroup" Visibility="Visible">
                                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" FontSize="11" Foreground="#FFFAFAFA">Từ</TextBlock>
                                             <DatePicker x:Name="DatePickerFrom" Width="120" Height="30" Margin="5,0,0,0" SelectedDateFormat="Short" FontSize="11"></DatePicker>

@@ -103,6 +103,8 @@ namespace QuanLyBanHangClient.WindowControl {
 
             ComboBoxCategory.SelectedValue = foodData.FoodCategorizeId;
 
+            if (foodData.IngredientWithFoods == null) { return; }
+
             foreach (IngredientWithFood ingredientWithFood in foodData.IngredientWithFoods) {
                 _ingredientsWithFood.Add(new IngredientWithFoodTable() {
                     Id = ingredientWithFood.IngredientId,
