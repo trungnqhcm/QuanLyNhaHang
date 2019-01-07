@@ -46,6 +46,12 @@
                                     </Grid>
                                 </Button>
                                 <TextBox x:Name="TextBoxCurrentTableId" Margin="16,25,16,8" Height="25" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxCurrentTableId_TextChanged"></TextBox>
+                                <Button x:Name="BtnChangeTableId" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnChangeTableId_Click" Margin="16,0,16,8">
+                                    <Grid>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Đổi thứ tự bàn</TextBlock>
+                                        <Image Source="/Resource/Image/detail-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
+                                    </Grid>
+                                </Button>
                                 <Button x:Name="BtnHistory" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnHistory_Click" Margin="16,0,16,16">
                                     <Grid>
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Lịch sử order</TextBlock>
