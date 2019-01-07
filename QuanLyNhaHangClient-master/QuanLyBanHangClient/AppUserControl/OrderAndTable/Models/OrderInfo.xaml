@@ -11,12 +11,7 @@
     <Expander x:Name="ExpandOrderInfo" IsExpanded="True">
         <Expander.Header >
             <Border Width="550">
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                        <GradientStop Color="DarkGray"/>
-                        <GradientStop Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
+               
                 <TextBlock Name="TextBlockHeader" Foreground="White" Text="Order 1" FontWeight="Bold" TextDecorations="Underline" Margin="10,0,0,0"  />
             </Border>
         </Expander.Header>
@@ -27,14 +22,14 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Style="{StaticResource BtnBorderStyle}" x:Name="BtnAddFood" HorizontalAlignment="Left" Margin="0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="#00A9A9A9" Click="BtnAddFood_Click">
+                <Button x:Name="BtnAddFood" HorizontalAlignment="Left" Margin="0" Background="#00DDDDDD" Cursor="Hand" BorderBrush="#00A9A9A9" Click="BtnAddFood_Click">
                     <StackPanel Orientation="Horizontal" Width="140">
                         <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Foreground="White" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline">Thêm món</TextBlock>
                     </StackPanel>
                 </Button>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
-                    <Button x:Name="BtnAccept" Style="{StaticResource BtnBorderStyle}" Click="BtnAccept_Click" Margin="0,0,0,-0.1" FontSize="11" Width="120" Height="35">Xác nhận</Button>
-                    <Button x:Name="BtnCancel" Style="{StaticResource BtnBorderStyle}" Click="BtnCancel_Click" Margin="20,0,0,-0.1" FontSize="11" Width="100" Height="35">Hủy bỏ</Button>
+                    <Button x:Name="BtnAccept" Click="BtnAccept_Click" Margin="0,0,0,-0.1" FontSize="11" Width="120" Height="35">Xác nhận</Button>
+                    <Button x:Name="BtnCancel" Click="BtnCancel_Click" Margin="20,0,0,-0.1" FontSize="11" Width="100" Height="35">Hủy bỏ</Button>
                 </StackPanel>
                 <Border Grid.Column="2" BorderBrush="{x:Null}" Height="26"  >
                     <TextBlock x:Name="TextBlockTotalOrder" TextWrapping="Wrap" Text="Tổng cộng: 90000" HorizontalAlignment="Right" Margin="0,0,55,0" Foreground="Black" FontWeight="Bold" TextDecorations="{x:Null}" VerticalAlignment="Center" TextAlignment="Right" Width="200"/>
@@ -44,9 +39,9 @@
                         <!--<ComboBox x:Name="ComboBoxSelectFood" Style="{StaticResource ComboBoxFlatStyle}" Height="20" Width="180" FontSize="10"/>-->
                         <custom:ComboBoxRoundedImage x:Name="ComboBoxSelectFood" Height="30" Width="240"/>
                         <TextBlock VerticalAlignment="Center" Padding="0" Margin="5,0,0,0">x</TextBlock>
-                        <TextBox x:Name="TextBoxQuantity" PreviewTextInput="NumberValidationTextBox"  Template="{StaticResource TextBoxRoundedTemplate}" Height="20" Width="50" Margin="2,0,0,0" FontSize="10" VerticalContentAlignment="Center">1</TextBox>
-                        <Button x:Name="BtnConfirmAdd" Style="{StaticResource BtnBorderStyle}" Width="50" Height="30" Margin="20,0,0,0" Click="BtnConfirmAdd_Click" FontSize="10">Thêm</Button>
-                        <Button x:Name="BtnConfirmExit" Style="{StaticResource BtnBorderStyle}" Width="50" Height="30" Margin="10,0,0,0" Click="BtnConfirmExit_Click" FontSize="10">Thoát</Button>
+                        <TextBox x:Name="TextBoxQuantity" PreviewTextInput="NumberValidationTextBox" Height="20" Width="50" Margin="2,0,0,0" FontSize="10" VerticalContentAlignment="Center">1</TextBox>
+                        <Button x:Name="BtnConfirmAdd"  Width="50" Height="30" Margin="20,0,0,0" Click="BtnConfirmAdd_Click" FontSize="10">Thêm</Button>
+                        <Button x:Name="BtnConfirmExit" Width="50" Height="30" Margin="10,0,0,0" Click="BtnConfirmExit_Click" FontSize="10">Thoát</Button>
                     </StackPanel>
                 </Border>
             </Grid>

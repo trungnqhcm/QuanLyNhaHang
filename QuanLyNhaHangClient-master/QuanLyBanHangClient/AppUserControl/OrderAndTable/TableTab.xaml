@@ -53,7 +53,7 @@
                                         <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                     </Grid>
                                 </Button>
-                                <TextBox x:Name="TextBoxCurrentTableId" Template="{StaticResource TextBoxRoundedTemplate}" Margin="10,10,10,0" Height="25" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxCurrentTableId_TextChanged"></TextBox>
+                                <TextBox x:Name="TextBoxCurrentTableId" Margin="10,10,10,0" Height="25" PreviewTextInput="NumberValidationTextBox" TextChanged="TextBoxCurrentTableId_TextChanged"></TextBox>
                                 <Button x:Name="BtnChangeTableId" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnChangeTableId_Click">
                                     <Grid>
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Đổi thứ tự bàn</TextBlock>

@@ -100,23 +100,7 @@ namespace QuanLyBanHangClient.WindowControl {
             TextBoxName.Text = foodData.Name;
             TextBoxPrice.Text = foodData.Price.ToString();
             _currentImage = null;
-            if (foodData.ImageId != null) {
-                loadingAnim.Visibility = Visibility.Visible;
-                _currentImageId = foodData.ImageId ?? default(int);
-                ImageManager.getInstance().loadImage(
-                    _currentImageId,
-                    delegate (byte[] imageData) {
-                        if(imageData != null
-                        && imageData.Length > 0) {
-                            ImageFood.Source = UtilFuction.imageToBitmapSource(UtilFuction.ByteToImage(imageData));
-                        }
-                        loadingAnim.Visibility = Visibility.Hidden;
-                    }
-                    );
-            } else {
-                _currentImageId = -1;
-                ImageFood.Source = (ImageSource)Application.Current.FindResource("ImageDefaultFood");
-            }
+           
 
             ComboBoxCategory.SelectedValue = foodData.FoodCategorizeId;
 
@@ -275,20 +259,6 @@ namespace QuanLyBanHangClient.WindowControl {
             }
             var foodData = FoodManager.getInstance().FoodList[(int)((ComboBoxItem)ComboBoxFoodCopy.ComboBoxData.SelectedItem).Tag];
             setupUIWithFoodData(foodData);
-        }
-
-        private void BtnPickImage_Click(object sender, RoutedEventArgs e) {
-            OpenFileDialog o = new OpenFileDialog();
-            o.Filter = "All Image Files|*.jpeg;*.png;*.jpg|All Files(*.*)|*.*";
-            if (o.ShowDialog() == true) {
-                try {
-                    System.Drawing.Image i = System.Drawing.Image.FromFile(o.FileName);
-                    _currentImage = i;
-                    ImageFood.Source = UtilFuction.imageToBitmapSource(i);
-                } catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
     }
 

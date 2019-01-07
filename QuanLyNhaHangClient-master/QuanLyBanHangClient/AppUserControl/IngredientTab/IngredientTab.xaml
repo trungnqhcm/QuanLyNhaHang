@@ -41,7 +41,7 @@
                             
                             <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" BorderBrush="White" Margin="5,5,5,0">
                                 <Grid>
-                                    <TextBox x:Name="TextBoxSearch" Template="{StaticResource TextBoxRoundedTemplate}" Margin="40,9,26.5,9"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
+                                    <TextBox x:Name="TextBoxSearch" Margin="40,9,26.5,9"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
                                     <Image Source="/Resource/Image/search-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
                                 </Grid>
                             </Border>

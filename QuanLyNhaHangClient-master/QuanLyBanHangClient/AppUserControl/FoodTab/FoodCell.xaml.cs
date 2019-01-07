@@ -47,14 +47,6 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
             TextBlockCategory.Text = FoodCategorizeManager.getInstance().FoodCategorizeList[FoodData.FoodCategorizeId].Name;
         }
 
-        public void setImageFood(System.Drawing.Image foodImage) {
-            if(foodImage != null) {
-                ImageFood.Source = UtilFuction.imageToBitmapSource(foodImage);
-            } else {
-                ImageFood.Source = (ImageSource) Application.Current.FindResource("ImageDefaultFood");
-            }
-        }
-
 
         private void TextBlockName_MouseUp(object sender, MouseButtonEventArgs e) {
 
