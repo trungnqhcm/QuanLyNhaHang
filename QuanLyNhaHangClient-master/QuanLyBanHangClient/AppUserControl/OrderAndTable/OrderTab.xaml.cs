@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.Model;
 using QuanLyBanHangClient.WindowControl;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
             LVOrderInfo.Items.Clear();
             foreach (KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
                 if (entry.Value != null) {
-                    var included = entry.Value.Tables.Any(t => t.TableId == TableData.TableId);
+                    var included = entry.Value.TableWithOrders.Any(t => t.TableId == TableData.Id);
                     if (included
                         && (entry.Value.BillMoney > entry.Value.MoneyReceive || entry.Value.BillMoney == 0)) {
                         LVOrderInfo.Items.Add(
@@ -82,8 +83,15 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab
                         WindownsManager.getInstance().showMessageBoxErrorNetwork();
                         RequestManager.getInstance().hideLoading();
                     };
+            var listOfTableWithOrder = new List<TableWithOrder>()
+            {
+                new TableWithOrder()
+                {
+                    TableId = TableData.Id
+                }
+            };
             OrderManager.getInstance().createOrderFromServerAndUpdate(
-                new List<Table>() { new Table() { Id=TableData.Id, TableId = TableData.TableId } },
+                listOfTableWithOrder,
                 new List<FoodWithOrder>(),
                 cbSuccessSent,
                 cbError

@@ -3,6 +3,7 @@ using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using QuanLyBanHangAPI.model;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -43,9 +44,9 @@ namespace QuanLyBanHangClient.Manager
                         if (order.FoodWithOrders == null) {
                             order.FoodWithOrders = new List<FoodWithOrder>();
                         }
-                        if(order.Tables == null)
+                        if(order.TableWithOrders == null)
                         {
-                            order.Tables = new List<Table>();
+                            order.TableWithOrders = new List<TableWithOrder>();
                         }
                         _orderList.Add(order.OrderId, order);
                     });
@@ -59,7 +60,7 @@ namespace QuanLyBanHangClient.Manager
                 );
         }
         public async Task createOrderFromServerAndUpdate(
-                    List<Table> listOfTable,
+                    List<TableWithOrder> listOfTableWithOrder,
                     List<FoodWithOrder> listFoodWithOrder,
                     Action<NetworkResponse, int> cbSuccessSent = null,
                     Action<string> cbError = null
@@ -71,6 +72,11 @@ namespace QuanLyBanHangClient.Manager
                     if(orderCreated.FoodWithOrders == null) {
                         orderCreated.FoodWithOrders = new List<FoodWithOrder>();
                     }
+                    if(orderCreated.TableWithOrders == null)
+                    {
+                        orderCreated.TableWithOrders = new List<TableWithOrder>();
+                     }
+                    
                     _orderList[orderCreated.OrderId] = orderCreated;
                     newOrderId = orderCreated.OrderId;
                 }
@@ -81,10 +87,10 @@ namespace QuanLyBanHangClient.Manager
             foreach (FoodWithOrder foodWithOrder in listFoodWithOrder) {
                 myObject.FoodWithOrders.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
             }
-            myObject.Tables = (dynamic)new JArray();
-            foreach(Table table in listOfTable)
+            myObject.TableWithOrders = (dynamic)new JArray();
+            foreach(TableWithOrder tableWithOrder in listOfTableWithOrder)
             {
-                myObject.Tables.Add(JObject.Parse(JsonConvert.SerializeObject(table)));
+                myObject.TableWithOrders.Add(JObject.Parse(JsonConvert.SerializeObject(tableWithOrder)));
             }
             await RequestManager.getInstance().postAsyncJson(
                 API_CONTROLLER + "/new",
@@ -111,9 +117,10 @@ namespace QuanLyBanHangClient.Manager
             };
 
             var myObject = (dynamic)new JObject();
-            myObject.FoodWithOrder = (dynamic)new JArray();
+            myObject.Id = orderId;
+            myObject.FoodWithOrders = (dynamic)new JArray();
             foreach (FoodWithOrder foodWithOrder in listFoodWithOrder) {
-                myObject.FoodWithOrder.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
+                myObject.FoodWithOrders.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
             }
             await RequestManager.getInstance().putAsyncJson(
                 API_CONTROLLER + "/updatefood/" + orderId,

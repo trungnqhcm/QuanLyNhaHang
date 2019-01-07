@@ -98,7 +98,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
                         } else {
 
                             foreach (KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
-                                var table = ((List<Table>)entry.Value.Tables).Find(t => t.TableId == oldTableId);
+                                var table = ((List<Table>)entry.Value.TableWithOrders).Find(t => t.TableId == oldTableId);
                                 if (entry.Value != null
                                     && table != null) {
                                     //WARNING: THIS MAY NOT UPDATE STUFF AS EXPECTED

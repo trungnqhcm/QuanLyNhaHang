@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
                 if(entry.Value != null) {
                     //THERE COULD BE SOMETHING WRONG HERE
                     bool contain = true;
-                    foreach (Table tb in entry.Value.Tables)
+                    foreach (TableWithOrder tb in entry.Value.TableWithOrders)
                     {
                         if (!listTableId.Contains(tb.TableId))
                         {

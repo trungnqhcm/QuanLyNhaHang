@@ -36,7 +36,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models {
             foreach(KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
                 if (entry.Value != null)
                 {
-                    var included = entry.Value.Tables.Any(t => t.TableId == TableData.TableId);
+                    var included = entry.Value.TableWithOrders.Any(t => t.TableId == TableData.Id);
                     if (included
                        && (entry.Value.MoneyReceive < entry.Value.BillMoney || entry.Value.BillMoney == 0))
                         {

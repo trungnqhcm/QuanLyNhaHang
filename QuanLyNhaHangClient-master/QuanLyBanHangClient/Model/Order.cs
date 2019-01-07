@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace QuanLyBanHangAPI.model
         [JsonProperty("Id")]
         public int OrderId { get; set; }
 
-        public virtual ICollection<Table> Tables { get; set; }
+        public virtual ICollection<TableWithOrder> TableWithOrders { get; set; }
         public DateTime CreatedDate { get; set; }
         public virtual ICollection<FoodWithOrder> FoodWithOrders { get; set; }
         public decimal BillMoney
@@ -46,7 +47,7 @@ namespace QuanLyBanHangAPI.model
 
         public override string ToString()
         {
-            return $"{nameof(OrderId)}: {OrderId}, {nameof(Tables)}: {Tables}, {nameof(CreatedDate)}: {CreatedDate}, {nameof(FoodWithOrders)}: {FoodWithOrders}, {nameof(BillMoney)}: {BillMoney}, {nameof(MoneyReceive)}: {MoneyReceive}, {nameof(MoneyReturn)}: {MoneyReturn}, {nameof(Note)}: {Note}";
+            return $"{nameof(OrderId)}: {OrderId}, {nameof(TableWithOrders)}: {TableWithOrders}, {nameof(CreatedDate)}: {CreatedDate}, {nameof(FoodWithOrders)}: {FoodWithOrders}, {nameof(BillMoney)}: {BillMoney}, {nameof(MoneyReceive)}: {MoneyReceive}, {nameof(MoneyReturn)}: {MoneyReturn}, {nameof(Note)}: {Note}";
         }
     }
 }
