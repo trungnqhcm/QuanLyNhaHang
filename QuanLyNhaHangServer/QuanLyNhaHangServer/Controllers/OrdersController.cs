@@ -26,7 +26,14 @@ namespace QuanLyNhaHangServer.Controllers
         [HttpGet]
         public IActionResult GetOrders()
         {
-            var jObject = Utils.getJObjectResponseFromArray(true, _context.Orders.ToList());
+            var orders = _context.Orders
+                .Include(e => e.FoodWithOrders)
+                .ThenInclude(e => e.Food)
+                .Include(e => e.FoodWithOrders)
+                .ThenInclude(e => e.Order)
+                .Include(e => e.TableWithOrders).ToList();
+
+            var jObject = Utils.getJObjectResponseFromArray(true, orders);
             return Ok(jObject);
         }
 
@@ -84,6 +91,77 @@ namespace QuanLyNhaHangServer.Controllers
             return NoContent();
         }
 
+        // PUT: api/Orders/5
+        [HttpPut("updatefood/{id}")]
+        public async Task<IActionResult> UpdateFood([FromRoute] long id, [FromBody] Order order)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != order.Id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var _order = await _context.Orders.FindAsync(id);
+                var newList = new List<FoodWithOrder>();
+                foreach (FoodWithOrder fwo in order.FoodWithOrders)
+                {
+                    var found = await _context.FoodWithOrders.SingleOrDefaultAsync(c => c.OrderId == fwo.OrderId && c.FoodId == fwo.FoodId);
+                    //foreach (FoodWithOrder f in _order.FoodWithOrders)
+                    //{
+                    //    if (f.OrderId != fwo.OrderId && f.FoodId != fwo.FoodId)
+                    //    {
+                    //        newList.Add(fwo);
+                    //    }
+                    //}
+                    //if (!found) _order.FoodWithOrders.Add(fwo);
+                    if (found == null)
+                    {
+                        newList.Add(fwo);
+                    }
+                    else
+                    {
+                        if(fwo.Quantities > 0)
+                        {
+                            found.Quantities = fwo.Quantities;
+                            newList.Add(found);
+                        }
+                        else
+                        {
+                            _order.FoodWithOrders.Remove(found);
+                        }
+                    }
+                }
+
+                _order.FoodWithOrders = newList;
+                await _context.SaveChangesAsync();
+                var returnObj = await _context.Orders.Include(e => e.FoodWithOrders)
+                    .ThenInclude(e => e.Food)
+                    .Include(e => e.FoodWithOrders)
+                    .ThenInclude(e => e.Order)
+                    .Include(e => e.TableWithOrders)
+                    .SingleOrDefaultAsync(e => e.Id == id);
+                var jObject = Utils.getJObjectResponseFromObject(true, _order);
+                return Ok(jObject);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!OrderExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
         // POST: api/Orders
         [HttpPost]
         public async Task<IActionResult> PostOrder([FromForm] Order order)
@@ -101,17 +179,33 @@ namespace QuanLyNhaHangServer.Controllers
 
         // POST: api/Orders
         [HttpPost("new")]
-        public async Task<IActionResult> AddOrder([FromForm] Order order)
+        public async Task<IActionResult> AddOrder([FromBody] Order order)
         {
+            string error = "";
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
+            try
+            {
+                //foreach (TableWithOrder tb in order.TableWithOrders)
+                //{
+                //    var index = _context.Tables.SingleOrDefault(e => e.TableId == tb.TableId).Id;
+                //    tb.Id = index;
+                //}
 
-            return CreatedAtAction("GetOrder", new { id = order.Id }, order);
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                error = ex.Message;
+            }
+
+            var jObject = Utils.getJObjectResponseFromObject(true, order, error);
+
+            return CreatedAtAction("GetOrder", new { id = order.Id }, jObject);
         }
 
         // DELETE: api/Orders/5

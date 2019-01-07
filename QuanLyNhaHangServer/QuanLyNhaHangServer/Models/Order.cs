@@ -11,11 +11,9 @@ namespace QuanLyNhaHangServer.Models
         public string Note { get; set; }
         public decimal MoneyReceive { get; set; }
         public decimal MoneyReturn { get; set; }
-        public long TableId { get; set; }
 
         public virtual ICollection<FoodWithOrder> FoodWithOrders { get; set; }
 
-        [ForeignKey("TableId")]
-        public virtual Table Table { get; set; }
+        public virtual ICollection<TableWithOrder> TableWithOrders { get; set; }
     }
 }

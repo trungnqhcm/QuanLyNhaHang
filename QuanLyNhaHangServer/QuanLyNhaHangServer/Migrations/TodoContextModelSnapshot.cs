@@ -160,11 +160,7 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.Property<string>("Note");
 
-                    b.Property<long>("TableId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TableId");
 
                     b.ToTable("Orders");
                 });
@@ -183,6 +179,28 @@ namespace QuanLyNhaHangServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tables");
+                });
+
+            modelBuilder.Entity("QuanLyNhaHangServer.Models.TableWithOrder", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<long>("OrderId");
+
+                    b.Property<long>("TableId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("TableId");
+
+                    b.ToTable("TableWithOrders");
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Unit", b =>
@@ -271,8 +289,13 @@ namespace QuanLyNhaHangServer.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("QuanLyNhaHangServer.Models.Order", b =>
+            modelBuilder.Entity("QuanLyNhaHangServer.Models.TableWithOrder", b =>
                 {
+                    b.HasOne("QuanLyNhaHangServer.Models.Order", "Order")
+                        .WithMany("TableWithOrders")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("QuanLyNhaHangServer.Models.Table", "Table")
                         .WithMany()
                         .HasForeignKey("TableId")

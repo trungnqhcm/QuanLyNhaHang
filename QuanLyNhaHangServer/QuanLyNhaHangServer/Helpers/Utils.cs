@@ -40,7 +40,11 @@ namespace QuanLyNhaHangServer.Helpers
         {
             var jObject = (dynamic)new JObject();
             jObject.Successful = isSuccess;
-            jObject.Data = JObject.Parse(JsonConvert.SerializeObject(data));
+            jObject.Data = JObject.Parse(JsonConvert.SerializeObject(data, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                }));
             jObject.Error = error;
             return jObject;
         }
