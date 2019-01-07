@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="250">
     <DockPanel>
-        <Image x:Name="ImageFood" Source="{StaticResource ImageDefaultFood}" HorizontalAlignment="Left" Margin="0" Width="40" Height="40" Stretch="Fill"/>
         <TextBlock Name="TextBlockName" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" TextWrapping="Wrap">
             3 - Bún đậu
         </TextBlock>
