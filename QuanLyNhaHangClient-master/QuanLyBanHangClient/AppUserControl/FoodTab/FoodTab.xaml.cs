@@ -126,15 +126,9 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
         private void DataGridFood_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             BtnRemoveFood.IsEnabled = true;
             BtnEditFood.IsEnabled = true;
-
-            BtnRemoveCategory.IsEnabled = false;
-            BtnEditCategory.IsEnabled = false;
         }
 
         private void DataGridCategory_SelectionChanged(object sender, SelectionChangedEventArgs e) { 
-            BtnRemoveFood.IsEnabled = false;
-            BtnEditFood.IsEnabled = false;
-
             BtnRemoveCategory.IsEnabled = true;
             BtnEditCategory.IsEnabled = true;
 
@@ -250,6 +244,14 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                 CategoryTable categoryTable = DataGridCategory.SelectedItem as CategoryTable;
                 WindownsManager.getInstance().showDetailFoodWithCategorizeWindow(this, categoryTable.Id);
             }
+        }
+
+        private void LVFood_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BtnRemoveFood.IsEnabled = true;
+            BtnEditFood.IsEnabled = true;
+
+            //DataGridCategory.
         }
     }
     class CategoryTable : INotifyPropertyChanged {

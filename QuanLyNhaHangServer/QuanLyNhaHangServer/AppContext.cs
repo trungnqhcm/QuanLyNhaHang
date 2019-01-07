@@ -25,5 +25,6 @@ namespace QuanLyNhaHangServer
         public DbSet<Order> Orders { get; set; }
         public DbSet<FoodWithOrder> FoodWithOrders { get; set; }
         public DbSet<IngredientWithFood> IngredientWithFoods { get; set; }
+        public DbSet<CurrentIngredient> CurrentIngredients { get; set; }
     }
 }
