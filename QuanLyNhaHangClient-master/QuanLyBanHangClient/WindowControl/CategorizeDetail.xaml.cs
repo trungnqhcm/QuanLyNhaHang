@@ -33,7 +33,7 @@ namespace QuanLyBanHangClient.WindowControl
 
             if (foodWithCategorizeId != Constant.ID_CREATE_NEW) {
                 var foodWithCategorizeData = FoodCategorizeManager.getInstance().FoodCategorizeList[foodWithCategorizeId];
-                TextBoxId.Text = foodWithCategorizeData.FoodCategorizeId.ToString();
+                TextBoxId.Text = foodWithCategorizeData.FoodCategoryId.ToString();
                 TextBoxName.Text = foodWithCategorizeData.Name;
 
                 this.Title = "Chi tiết loại món";

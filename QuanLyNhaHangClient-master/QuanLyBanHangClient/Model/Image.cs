@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,15 @@ namespace QuanLyBanHangAPI.model.SQL
 {
     public class Image
     {
+        [JsonProperty("Id")]
+        public int ImageId { get; set; }
         private byte[] imageBytes;
 
         public Image(byte[] imageBytes)
         {
             this.imageBytes = imageBytes;
         }
-
-        public int ImageId { get; set; }
+       
         public byte[] Binary { get; set; }
 
         public static Image Create(byte[] randomImageByte)

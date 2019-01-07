@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using QuanLyBanHangAPI.model.SQL;
 
 namespace QuanLyBanHangAPI.model
 {
     public class Food
     {
+        [JsonProperty("Id")]
+        public int ImageId { get; set; }
         public int FoodId { get; set; }
         public Food()
         {
@@ -18,7 +21,7 @@ namespace QuanLyBanHangAPI.model
         public decimal Price { get; set; }
         public int? ImageId { get; set; }
         public int FoodCategorizeId { get; set; }
-        public FoodCategorize FoodCategorize { get; set; }
+        public FoodCategory FoodCategorize { get; set; }
 
         public Food(int foodId)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace QuanLyBanHangAPI.model
 {
     public class Table
     {
+        [JsonProperty("Id")]
         public int TableId { get; set; }
+
         public Table()
         {
 

@@ -17,10 +17,10 @@ namespace QuanLyBanHangClient.Manager {
             return _instance;
         }
         private string API_CONTROLLER = "/api/foodcategories";
-        private Dictionary<int, FoodCategorize> _foodCategorizeList;
-        public Dictionary<int, FoodCategorize> FoodCategorizeList { get { return _foodCategorizeList; } }
+        private Dictionary<int, FoodCategory> _foodCategorizeList;
+        public Dictionary<int, FoodCategory> FoodCategorizeList { get { return _foodCategorizeList; } }
         private FoodCategorizeManager() {
-            _foodCategorizeList = new Dictionary<int, FoodCategorize>();
+            _foodCategorizeList = new Dictionary<int, FoodCategory>();
         }
         #region Network
 
@@ -31,9 +31,9 @@ namespace QuanLyBanHangClient.Manager {
             Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
                 if (networkResponse.Successful) {
                     _foodCategorizeList.Clear();
-                    List<FoodCategorize> foodCategorizeListFromSV = JsonConvert.DeserializeObject<List<FoodCategorize>>(networkResponse.Data.ToString());
-                    foodCategorizeListFromSV.ForEach(delegate (FoodCategorize foodCategorize) {
-                        _foodCategorizeList.Add(foodCategorize.FoodCategorizeId, foodCategorize);
+                    List<FoodCategory> foodCategorizeListFromSV = JsonConvert.DeserializeObject<List<FoodCategory>>(networkResponse.Data.ToString());
+                    foodCategorizeListFromSV.ForEach(delegate (FoodCategory foodCategorize) {
+                        _foodCategorizeList.Add(foodCategorize.FoodCategoryId, foodCategorize);
                     });
                 }
                 cbSuccessSent?.Invoke(networkResponse);
@@ -51,8 +51,8 @@ namespace QuanLyBanHangClient.Manager {
             ) {
             Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
                 if (networkResponse.Successful) {
-                    FoodCategorize foodCategorizeCreated = JsonConvert.DeserializeObject<FoodCategorize>(networkResponse.Data.ToString());
-                    _foodCategorizeList[foodCategorizeCreated.FoodCategorizeId] = foodCategorizeCreated;
+                    FoodCategory foodCategorizeCreated = JsonConvert.DeserializeObject<FoodCategory>(networkResponse.Data.ToString());
+                    _foodCategorizeList[foodCategorizeCreated.FoodCategoryId] = foodCategorizeCreated;
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };
@@ -74,8 +74,8 @@ namespace QuanLyBanHangClient.Manager {
             ) {
             Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
                 if (networkResponse.Successful) {
-                    FoodCategorize foodCategorizeCreated = JsonConvert.DeserializeObject<FoodCategorize>(networkResponse.Data.ToString());
-                    _foodCategorizeList[foodCategorizeCreated.FoodCategorizeId] = foodCategorizeCreated;
+                    FoodCategory foodCategorizeCreated = JsonConvert.DeserializeObject<FoodCategory>(networkResponse.Data.ToString());
+                    _foodCategorizeList[foodCategorizeCreated.FoodCategoryId] = foodCategorizeCreated;
                 }
                 cbSuccessSent?.Invoke(networkResponse);
             };

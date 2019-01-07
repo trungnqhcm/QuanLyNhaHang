@@ -221,10 +221,10 @@ namespace QuanLyBanHangClient.AppUserControl.FoodTab
                     );
             } else {
                 categoryListTable.Clear();
-                foreach (KeyValuePair<int, FoodCategorize> entry in FoodCategorizeManager.getInstance().FoodCategorizeList) {
+                foreach (KeyValuePair<int, FoodCategory> entry in FoodCategorizeManager.getInstance().FoodCategorizeList) {
                     if (entry.Value != null) {
                         categoryListTable.Add(new CategoryTable() {
-                            Id = entry.Value.FoodCategorizeId,
+                            Id = entry.Value.FoodCategoryId,
                             Name = entry.Value.Name
                         });
                     }

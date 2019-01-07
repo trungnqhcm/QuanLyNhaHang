@@ -45,7 +45,7 @@ namespace QuanLyBanHangClient.WindowControl {
             var foodId = _foodDetailId;
 
             var categorizeNames = new List<ComboData>();
-            foreach (KeyValuePair<int, FoodCategorize> entry in FoodCategorizeManager.getInstance().FoodCategorizeList) {
+            foreach (KeyValuePair<int, FoodCategory> entry in FoodCategorizeManager.getInstance().FoodCategorizeList) {
                 if (entry.Value != null) {
                     categorizeNames.Add(new ComboData() { Id = entry.Key, Value = entry.Value.Name });
                 }
