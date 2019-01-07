@@ -1,4 +1,5 @@
-﻿<Window x:Class="QuanLyBanHangClient.WindowControl.FoodDetail"
+﻿<Controls:MetroWindow x:Class="QuanLyBanHangClient.WindowControl.FoodDetail"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,28 +19,28 @@
                     <Button x:Name="BtnCopy" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
                     <!--<ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>-->
                     <custom:ComboBoxRoundedImage x:Name="ComboBoxFoodCopy" Margin="40,0,0,0" Width="295">
-                        
+
                     </custom:ComboBoxRoundedImage>
                     <TextBlock x:Name="TextBlockId" FontWeight="Bold" Width="80" Visibility="Collapsed" Foreground="White">ID</TextBlock>
                     <TextBox x:Name="TextBoxId" Margin="40,0,60,0" DockPanel.Dock="Right" IsReadOnly="True" Visibility="Collapsed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="50,15,0,0">
-                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Tên món ăn</TextBlock>
+                    <TextBlock FontWeight="Bold" Width="80">Tên món ăn</TextBlock>
                     <TextBox x:Name="TextBoxName" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
                 </DockPanel>
                 <DockPanel Margin="50,15,0,0">
-                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Giá</TextBlock>
+                    <TextBlock FontWeight="Bold" Width="80">Giá</TextBlock>
                     <TextBox x:Name="TextBoxPrice" Margin="40,0,60,0" DockPanel.Dock="Right" PreviewTextInput="NumberValidationTextBox" VerticalContentAlignment="Center"/>
                 </DockPanel>
                 <DockPanel Margin="50,15,0,0">
-                    <TextBlock FontWeight="Bold" Width="80" Foreground="White">Loại món ăn</TextBlock>
+                    <TextBlock FontWeight="Bold" Width="80">Loại món ăn</TextBlock>
                     <ComboBox x:Name="ComboBoxCategory" Margin="40,0,60,0" DockPanel.Dock="Right" VerticalContentAlignment="Center"/>
                 </DockPanel>
 
                 <TextBlock Margin="50,15,0,0" FontWeight="Bold" Width="180" HorizontalAlignment="Left" Foreground="White">Danh sách nguyên liệu</TextBlock>
                 <Border Margin="30,15,0,0" Height="180" Padding="1" BorderBrush="White" BorderThickness="2" CornerRadius="{StaticResource CornerRadiusValue}">
-                    <DockPanel>
-                        <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="0" Height="180" Width="320" SelectionChanged="DataGridIngredient_SelectionChanged">
+                    <DockPanel Background="WhiteSmoke" Height="174" VerticalAlignment="Bottom">
+                        <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8,8,8,8" Width="349" SelectionChanged="DataGridIngredient_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                 <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>
@@ -51,7 +52,7 @@
                             <ComboBox x:Name="ComboBoxIngredient" Margin="0,20,0,0" SelectionChanged="ComboBoxIngredient_SelectionChanged"></ComboBox>
                             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                                 <TextBox x:Name="TextBoxQuantity" PreviewTextInput="NumberValidationTextBox" Width="60" HorizontalAlignment="Left"></TextBox>
-                                <TextBlock x:Name="TextBlockUnit" FontStyle="Italic" Margin="6,2,0,0" Text="Kilogram" TextWrapping="WrapWithOverflow" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"/>
+                                <TextBlock x:Name="TextBlockUnit" FontStyle="Italic" Margin="6,2,0,0" Text="Kilogram" TextWrapping="WrapWithOverflow" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                             </StackPanel>
                             <Button x:Name="BtnAdd" Margin="0,8,0,0" Click="BtnAdd_Click" >Thêm</Button>
                             <Button x:Name="BtnRemove" Margin="0,16,0,0"  IsEnabled="False" Click="BtnRemove_Click" Content="Xóa"/>
@@ -61,15 +62,7 @@
                 <Button x:Name="BtnConfirm" Width="220" Height="50" FontSize="16" Margin="0,20,0,0" Click="BtnConfirm_Click" Content="Tạo mới" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
-        <TextBlock x:Name="TextBlockTile" Margin="0,25,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" Foreground="White" TextAlignment="Center" VerticalAlignment="Top">
-            <TextBlock.Background>
-                <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                    <GradientStop Offset="0"/>
-                    <GradientStop Color="#FFBC4444" Offset="0.4"/>
-                    <GradientStop Color="#FFBC4444" Offset="0.6"/>
-                    <GradientStop Offset="1"/>
-                </LinearGradientBrush>
-            </TextBlock.Background>
+        <TextBlock x:Name="TextBlockTile" Margin="0,25,0,0" FontWeight="Bold" FontSize="15"  FlowDirection="LeftToRight" TextAlignment="Center" VerticalAlignment="Top">
                     Thêm món ăn
         </TextBlock>
         <Grid x:Name="loadingAnim" Background="#5FA5A5A5" Visibility="Hidden">
@@ -77,4 +70,4 @@
                              VerticalAlignment="Center" Width="45" Height="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Canvas.Top="0"/>
         </Grid>
     </Grid>
-</Window>
+</Controls:MetroWindow>

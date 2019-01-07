@@ -86,7 +86,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <DockPanel>
+                            <DockPanel Background="WhiteSmoke">
                                 <DataGrid TextSearch.Text="Cơm" Name="DataGridCategory" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" SelectionChanged="DataGridCategory_SelectionChanged" BorderBrush="Gray" Background="White">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
@@ -95,7 +95,7 @@
                                 </DataGrid>
                             </DockPanel>
 
-                            <DockPanel Grid.Column="1">
+                            <DockPanel Grid.Column="1" Background="WhiteSmoke">
                                 <Grid Margin="5" DockPanel.Dock="Top">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="3*"/>
@@ -106,7 +106,7 @@
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" Visibility="Hidden">Giá</TextBlock>
                                     <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" Visibility="Hidden">Loại</TextBlock>
                                 </Grid>
-                                <ListView x:Name="LVFood" Background="Transparent" BorderBrush="#00ABADB3" Margin="8,-16,8,8">
+                                <ListView x:Name="LVFood" Background="WhiteSmoke" BorderBrush="#00ABADB3" Margin="8,-16,8,8">
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
                                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

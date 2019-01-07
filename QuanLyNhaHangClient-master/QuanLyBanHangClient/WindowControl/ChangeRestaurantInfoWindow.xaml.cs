@@ -12,13 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace QuanLyBanHangClient.WindowControl
 {
     /// <summary>
     /// Interaction logic for ChangeRestaurantInfoWindow.xaml
     /// </summary>
-    public partial class ChangeRestaurantInfoWindow : Window
+    public partial class ChangeRestaurantInfoWindow : MetroWindow
     {
         public ChangeRestaurantInfoWindow()
         {

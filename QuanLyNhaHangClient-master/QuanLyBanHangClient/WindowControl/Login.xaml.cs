@@ -23,7 +23,7 @@ namespace QuanLyBanHangClient.WindowControl
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : MetroWindow
+    public partial class Login : MetroWindow 
     {
         public Login(bool isFromOpenApp)
         {

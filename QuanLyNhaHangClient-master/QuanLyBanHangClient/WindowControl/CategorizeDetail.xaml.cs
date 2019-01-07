@@ -13,13 +13,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace QuanLyBanHangClient.WindowControl
 {
     /// <summary>
     /// Interaction logic for CategorizeDetail.xaml
     /// </summary>
-    public partial class CategorizeDetail : Window {
+    public partial class CategorizeDetail : MetroWindow {
         private int _foodWithCategorizeDetailId = Constant.ID_CREATE_NEW;
         private FoodTab _foodTab = null;
         public CategorizeDetail(FoodTab foodTab, int foodWithCategorizeId = Constant.ID_CREATE_NEW) {
@@ -37,7 +38,7 @@ namespace QuanLyBanHangClient.WindowControl
                 TextBoxName.Text = foodWithCategorizeData.Name;
 
                 this.Title = "Chi tiết loại món";
-                TextBlockNameWindow.Text = "Chi tiết loại món";
+                //TextBlockNameWindow.Text = "Chi tiết loại món";
                 BtnConfirm.Content = "Sửa";
             }
         }

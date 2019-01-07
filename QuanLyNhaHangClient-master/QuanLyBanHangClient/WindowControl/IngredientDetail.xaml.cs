@@ -14,12 +14,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace QuanLyBanHangClient.WindowControl {
     /// <summary>
     /// Interaction logic for IngredientDetail.xaml
     /// </summary>
-    public partial class IngredientDetail : Window {
+    public partial class IngredientDetail : MetroWindow {
         private int _ingredientDetailId = Constant.ID_CREATE_NEW;
         private IngredientTab _ingredientTab = null;
         public IngredientDetail(IngredientTab ingredientTab, int ingredientId = Constant.ID_CREATE_NEW) {
@@ -45,12 +46,12 @@ namespace QuanLyBanHangClient.WindowControl {
 
             if (ingredientId != Constant.ID_CREATE_NEW) {
                 var ingredientData = IngredientManager.getInstance().IngredientList[ingredientId];
-                TextBoxId.Text = ingredientData.IngredientId.ToString();
+                //TextBoxId.Text = ingredientData.IngredientId.ToString();
                 TextBoxName.Text = ingredientData.Name;
 
                 ComboBoxUnit.SelectedValue = ingredientData.UnitId;
                 Title = "Chi tiết nguyên liệu";
-                TextBlockNameWindow.Text = "Chi tiết nguyên liệu";
+                //TextBlockNameWindow.Text = "Chi tiết nguyên liệu";
                 BtnConfirm.Content = "Sửa";
             }
         }
