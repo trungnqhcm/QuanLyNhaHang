@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -104,11 +105,10 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
 
                             foreach (KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList)
                             {
-                                var table = ((List<Table>)entry.Value.TableWithOrders).Find(t => t.TableId == oldTableId);
+                                var table = ((List<TableWithOrder>)entry.Value.TableWithOrders).Find(t => t.TableId == oldTableId);
                                 if (entry.Value != null
                                     && table != null)
                                 {
-                                    //WARNING: THIS MAY NOT UPDATE STUFF AS EXPECTED
                                     table.TableId = newTableId;
                                 }
                             }
