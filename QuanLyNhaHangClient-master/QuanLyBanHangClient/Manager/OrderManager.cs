@@ -165,9 +165,8 @@ namespace QuanLyBanHangClient.Manager
             };
             KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
             };
-            await RequestManager.getInstance().postAsync(
-                API_CONTROLLER + "/cancel/" + orderId,
-                keys,
+            await RequestManager.getInstance().deleteAsync(
+                API_CONTROLLER +"/"+ orderId,
                 newCBSuccessSent,
                 cbError
                 );

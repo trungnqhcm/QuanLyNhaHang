@@ -308,6 +308,7 @@
     <Compile Include="Model\ReportModel.cs" />
     <Compile Include="Model\RestaurantInfo.cs" />
     <Compile Include="Model\Table.cs" />
+    <Compile Include="Model\TableWithOrder.cs" />
     <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="WindowControl\CategorizeDetail.xaml.cs">

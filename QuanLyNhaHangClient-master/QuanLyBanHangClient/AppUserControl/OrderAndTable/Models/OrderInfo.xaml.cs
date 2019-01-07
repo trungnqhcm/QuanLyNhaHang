@@ -66,6 +66,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models
                 int.TryParse(orderWithFood.TextBoxQuantity.Text, out newQuantity);
                 listFoodWithOrders.Add(new FoodWithOrder() {
                     FoodId = orderWithFood._foodWithOrder.FoodId,
+                    OrderId = orderWithFood._foodWithOrder.OrderId,
                     Quantities = newQuantity
                 });
 
