@@ -91,6 +91,7 @@ namespace QuanLyBanHangClient.Manager
                 cbError
                 );
         }
+
         public async Task deleteTableromServerAndUpdate(
                     int id,
                     Action<NetworkResponse> cbSuccessSent = null,

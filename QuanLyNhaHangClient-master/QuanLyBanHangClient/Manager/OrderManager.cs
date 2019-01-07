@@ -152,6 +152,51 @@ namespace QuanLyBanHangClient.Manager
                 cbError
                 );
         }
+
+        public async Task mergeTableFromServerAndUpdate(
+          int fromMergeTableId,
+          int toMergeTableId,
+          Action<NetworkResponse> cbSuccessSent = null,
+          Action<string> cbError = null)
+        {
+            Action<NetworkResponse> newCBSuccessSent = delegate (NetworkResponse networkResponse) {
+                if (networkResponse.Successful)
+                {
+                    Order orderCreated = JsonConvert.DeserializeObject<Order>(networkResponse.Data.ToString());
+                    if (orderCreated.FoodWithOrders == null)
+                    {
+                        orderCreated.FoodWithOrders = new List<FoodWithOrder>();
+                    }
+                    _orderList[orderCreated.OrderId] = orderCreated;
+                }
+                cbSuccessSent?.Invoke(networkResponse);
+            };
+            //var listOfTableWithOrders = new List<TableWithOrder>();
+            //foreach(var order in OrderManager.getInstance().OrderList)
+            //{
+            //    var _twos = order.Value.TableWithOrders.Where(e=>e.TableId == toMergeTableId).ToList();
+            //    if (_twos.Count > 0)
+            //    {
+            //        _twos.Add(new TableWithOrder()
+            //        {
+            //            OrderId = order.Value.OrderId,
+            //            TableId = fromMergeTableId,
+            //        });
+                  
+            //    }
+            //}
+            KeyValuePair<string, string>[] keys = new KeyValuePair<string, string>[] {
+                new KeyValuePair<string, string>("TableId", fromMergeTableId.ToString())
+            };
+            await RequestManager.getInstance().postAsync(
+                 API_CONTROLLER + "/updatetable/" + toMergeTableId,
+                 keys,
+                 newCBSuccessSent,
+                 cbError
+                 );
+        }
+
+
         public async Task cacelOrderFromServerAndUpdate(
                     int orderId,
                     Action<NetworkResponse> cbSuccessSent = null,

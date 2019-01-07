@@ -39,6 +39,20 @@
                                         <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,9,0,7.393" Width="20"/>
                                     </Grid>
                                 </Button>
+                                <Button x:Name="BtnMerge" IsEnabled="False" Style="{StaticResource BtnInSideBarStyle}" Click="BtnMerge_Click" Margin="16,16,16,8">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="18*"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="54,10,10,7" Width="106">Ghép bàn</TextBlock>
+                                        <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,9,0,7.393" Width="20"/>
+                                    </Grid>
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
                                 <Button x:Name="BtnRemoveTable" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnRemoveTable_Click" Margin="16,0,16,8">
                                     <Grid Margin="8">
                                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="52,2,0,2" Width="102">Xóa bàn</TextBlock>

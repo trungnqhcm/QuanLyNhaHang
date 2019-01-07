@@ -4,6 +4,7 @@ using QuanLyBanHangClient.Manager;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -42,6 +43,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             orderAndTableTab.OrderTabCustom.reloadAllUIOrderTab(tableInfo.TableData);
             orderAndTableTab.OrderTabCustom.Visibility = System.Windows.Visibility.Visible;
             orderAndTableTab.TableTabCustom.Visibility = System.Windows.Visibility.Hidden;
+           
         }
 
         private void LVTable_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -50,7 +52,23 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             }
             BtnChangeTableId.IsEnabled = false;
             BtnRemoveTable.IsEnabled = true;
-            TextBoxCurrentTableId.Text = ((TableInfo)LVTable.SelectedItem).TableData.TableId.ToString();
+           
+            var tbinfo = ((TableInfo)LVTable.SelectedItem).TableData;
+            var enable = true;
+            foreach (var order in OrderManager.getInstance().OrderList)
+            {
+                foreach(var two in order.Value.TableWithOrders)
+                {
+                    if(two.TableId == tbinfo.Id)
+                    {
+                        enable = false;
+                        break;
+                    }
+                }
+                if (!enable) break;
+            }
+            BtnMerge.IsEnabled = enable;
+            TextBoxCurrentTableId.Text = tbinfo.TableId.ToString();
         }
 
         private void BtnAdd_Click(object sender, System.Windows.RoutedEventArgs e) {
@@ -174,6 +192,86 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
         private void BtnHistory_Click(object sender, System.Windows.RoutedEventArgs e) {
             HistoryTab.reloadListViewOrder(false);
             HistoryTab.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void BtnMerge_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var addButton = sender as FrameworkElement;
+            int selectedId = ((TableInfo)LVTable.SelectedItem).TableData.Id;
+            if (addButton != null)
+            {
+                addButton.ContextMenu.Items.Clear();
+                var tableList = new Dictionary<int, Table>();
+                foreach (var pair in OrderManager.getInstance().OrderList)
+                {
+                    var order = pair.Value;
+                    if (order.BillMoney > 0)
+                    {
+                        foreach(var tb in order.TableWithOrders)
+                        {
+                            if (!tableList.ContainsKey(tb.TableId))
+                            {
+                                var tables = TableManager.getInstance().TableList;
+                                Table table = new Table();
+                                foreach (var t in tables)
+                                {
+                                    if (t.Value.Id == tb.TableId)
+                                    {
+                                        table = t.Value;
+                                    }
+                                }
+                                tableList.Add(tb.TableId, table);
+                            }
+                        }
+                    }
+                }
+                foreach (var table in tableList)
+                {
+                    var menuItem = new MenuItem();
+                    menuItem.Header = "Bàn "+ table.Value.TableId;
+                    menuItem.Tag = table.Value.Id;
+                    menuItem.Click += MenuItem_Click;
+                    addButton.ContextMenu.Items.Add(menuItem);
+                }
+              
+                addButton.ContextMenu.IsOpen = true;
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as FrameworkElement;
+            int toMergeTableId = (int)menuItem.Tag;
+            int fromMergeTableId = ((TableInfo)LVTable.SelectedItem).TableData.Id;
+            RequestManager.getInstance().showLoading();
+            Action<NetworkResponse> cbSuccessSent =
+                    delegate (NetworkResponse networkResponse)
+                    {
+                        if (!networkResponse.Successful)
+                        {
+                            WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+                        }
+                        else
+                        {
+                            reloadLVTable();
+                        }
+                        RequestManager.getInstance().hideLoading();
+                    };
+
+            Action<string> cbError =
+                    delegate (string err)
+                    {
+                        WindownsManager.getInstance().showMessageBoxErrorNetwork();
+                        RequestManager.getInstance().hideLoading();
+                    };
+
+
+            OrderManager.getInstance().mergeTableFromServerAndUpdate(
+                fromMergeTableId,
+                toMergeTableId,
+                cbSuccessSent,
+                cbError
+            );
         }
     }
 }
