@@ -74,8 +74,6 @@ namespace QuanLyBanHangClient.WindowControl {
 
                 TextBlockId.Visibility = Visibility.Visible;
                 TextBoxId.Visibility = Visibility.Visible;
-                BtnCopy.Visibility = Visibility.Collapsed;
-                ComboBoxFoodCopy.Visibility = Visibility.Collapsed;
             } else {
                 foreach (KeyValuePair<int, Food> entry in FoodManager.getInstance().FoodList) {
                     if (entry.Value != null) {
@@ -89,8 +87,6 @@ namespace QuanLyBanHangClient.WindowControl {
                                 imgSrc = UtilFuction.imageToBitmapSource(img);
                             }
                         }
-                        var item = ComboBoxFoodCopy.addItem(txt, imgSrc);
-                        item.Tag = entry.Value.FoodId;
                     }
                 }
             }
@@ -251,14 +247,6 @@ namespace QuanLyBanHangClient.WindowControl {
             if(ComboBoxIngredient.SelectedIndex >= 0) {
                 TextBlockUnit.Text = UnitManager.getInstance().UnitList[IngredientManager.getInstance().IngredientList[((ComboData)ComboBoxIngredient.SelectedItem).Id].UnitId].Name;
             }
-        }
-
-        private void BtnCopy_Click(object sender, RoutedEventArgs e) {
-            if(ComboBoxFoodCopy.ComboBoxData.SelectedIndex < 0) {
-                return;
-            }
-            var foodData = FoodManager.getInstance().FoodList[(int)((ComboBoxItem)ComboBoxFoodCopy.ComboBoxData.SelectedItem).Tag];
-            setupUIWithFoodData(foodData);
         }
     }
 

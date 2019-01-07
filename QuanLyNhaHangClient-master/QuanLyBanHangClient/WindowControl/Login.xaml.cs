@@ -1,4 +1,5 @@
 ﻿using LoadingPanelSample.Controls;
+using MahApps.Metro.Controls;
 using Newtonsoft.Json.Linq;
 using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.Manager;
@@ -22,7 +23,7 @@ namespace QuanLyBanHangClient.WindowControl
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Login : MetroWindow
     {
         public Login(bool isFromOpenApp)
         {
