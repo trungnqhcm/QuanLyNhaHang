@@ -19,7 +19,9 @@ namespace QuanLyBanHangAPI.model
         public String Name { get; set; }
         public decimal Price { get; set; }
         public int? ImageId { get; set; }
+        [JsonProperty("FoodCategoryId")]
         public int FoodCategorizeId { get; set; }
+        [JsonProperty("FoodCategory")]
         public FoodCategory FoodCategorize { get; set; }
 
         public Food(int foodId)

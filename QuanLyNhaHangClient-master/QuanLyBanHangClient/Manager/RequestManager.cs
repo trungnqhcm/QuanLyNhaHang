@@ -107,8 +107,7 @@ namespace QuanLyBanHangClient.Manager {
                     Action<string> cbError = null
             ) {
             try {
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(UserInfoManager.getInstance().userInfo.type, UserInfoManager.getInstance().userInfo.token);
-
+      
                 var content = new StringContent(JsonConvert.SerializeObject(obj).ToString(), Encoding.UTF8, "application/json");
                 HttpResponseMessage result;
                 switch (requestType) {
@@ -132,9 +131,9 @@ namespace QuanLyBanHangClient.Manager {
                     var networkResult = new NetworkResponse() {
                         Successful = jsonObject["Successful"].Value<bool>(),
                         Data = jsonObject["Data"] as JContainer,
-                        ErrorDescription = jsonObject["ErrorDescription"].Value<string>(),
-                        ErrorMessage = jsonObject["ErrorMessage"].Value<string>(),
-                        ErrorCode = jsonObject["ErrorCode"].Value<string>()
+                        //ErrorDescription = jsonObject["ErrorDescription"].Value<string>(),
+                        //ErrorMessage = jsonObject["ErrorMessage"].Value<string>(),
+                        //ErrorCode = jsonObject["ErrorCode"].Value<string>()
                     };
                     cbSuccessSent?.Invoke(networkResult);
                 } else {
