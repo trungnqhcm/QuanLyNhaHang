@@ -82,7 +82,7 @@ namespace QuanLyBanHangClient.Manager {
             var myObject = (dynamic)new JObject();
             myObject.Name = name;
             myObject.Price = price;
-            myObject.FoodCategorizeId = foodCategorizeId;
+            myObject.FoodCategoryId = foodCategorizeId;
             myObject.IngredientWithFoods = (dynamic)new JArray();
             if (imageId > -1) {
                 myObject.ImageId = imageId.ToString();

@@ -108,8 +108,6 @@ namespace QuanLyNhaHangServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<long?>("FoodId");
-
                     b.Property<string>("Name");
 
                     b.Property<long>("UnitId");
@@ -118,11 +116,33 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FoodId");
-
                     b.HasIndex("UnitId");
 
                     b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("QuanLyNhaHangServer.Models.IngredientWithFood", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAddOrUpdate();
+
+                    b.Property<long>("FoodId");
+
+                    b.Property<long>("IngredientId");
+
+                    b.Property<float>("Quantities");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoodId");
+
+                    b.HasIndex("IngredientId");
+
+                    b.ToTable("IngredientWithFoods");
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Order", b =>
@@ -232,13 +252,22 @@ namespace QuanLyNhaHangServer.Migrations
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Ingredient", b =>
                 {
-                    b.HasOne("QuanLyNhaHangServer.Models.Food")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("FoodId");
-
                     b.HasOne("QuanLyNhaHangServer.Models.Unit", "Unit")
                         .WithMany()
                         .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("QuanLyNhaHangServer.Models.IngredientWithFood", b =>
+                {
+                    b.HasOne("QuanLyNhaHangServer.Models.Food", "Food")
+                        .WithMany("IngredientWithFoods")
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("QuanLyNhaHangServer.Models.Ingredient", "Ingredient")
+                        .WithMany()
+                        .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
