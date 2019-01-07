@@ -43,6 +43,10 @@ namespace QuanLyBanHangClient.Manager
                         if (order.FoodWithOrders == null) {
                             order.FoodWithOrders = new List<FoodWithOrder>();
                         }
+                        if(order.Tables == null)
+                        {
+                            order.Tables = new List<Table>();
+                        }
                         _orderList.Add(order.OrderId, order);
                     });
                 }
@@ -55,7 +59,7 @@ namespace QuanLyBanHangClient.Manager
                 );
         }
         public async Task createOrderFromServerAndUpdate(
-                    int tableId,
+                    List<Table> listOfTable,
                     List<FoodWithOrder> listFoodWithOrder,
                     Action<NetworkResponse, int> cbSuccessSent = null,
                     Action<string> cbError = null
@@ -77,7 +81,11 @@ namespace QuanLyBanHangClient.Manager
             foreach (FoodWithOrder foodWithOrder in listFoodWithOrder) {
                 myObject.FoodWithOrders.Add(JObject.Parse(JsonConvert.SerializeObject(foodWithOrder)));
             }
-            myObject.TableId = tableId;
+            myObject.Tables = (dynamic)new JArray();
+            foreach(Table table in listOfTable)
+            {
+                myObject.Tables.Add(JObject.Parse(JsonConvert.SerializeObject(table)));
+            }
             await RequestManager.getInstance().postAsyncJson(
                 API_CONTROLLER + "/new",
                 myObject,

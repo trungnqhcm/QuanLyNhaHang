@@ -11,8 +11,8 @@ namespace QuanLyBanHangAPI.model
     {
         [JsonProperty("Id")]
         public int OrderId { get; set; }
-        public int TableId { get; set; }
-        public virtual Table Table { get; set; }
+
+        public virtual ICollection<Table> Tables { get; set; }
         public DateTime CreatedDate { get; set; }
         public virtual ICollection<FoodWithOrder> FoodWithOrders { get; set; }
         public decimal BillMoney
@@ -46,7 +46,7 @@ namespace QuanLyBanHangAPI.model
 
         public override string ToString()
         {
-            return $"{nameof(OrderId)}: {OrderId}, {nameof(TableId)}: {TableId}, {nameof(Table)}: {Table}, {nameof(CreatedDate)}: {CreatedDate}, {nameof(FoodWithOrders)}: {FoodWithOrders}, {nameof(BillMoney)}: {BillMoney}, {nameof(MoneyReceive)}: {MoneyReceive}, {nameof(MoneyReturn)}: {MoneyReturn}, {nameof(Note)}: {Note}";
+            return $"{nameof(OrderId)}: {OrderId}, {nameof(Tables)}: {Tables}, {nameof(CreatedDate)}: {CreatedDate}, {nameof(FoodWithOrders)}: {FoodWithOrders}, {nameof(BillMoney)}: {BillMoney}, {nameof(MoneyReceive)}: {MoneyReceive}, {nameof(MoneyReturn)}: {MoneyReturn}, {nameof(Note)}: {Note}";
         }
     }
 }

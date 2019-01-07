@@ -71,8 +71,17 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
             LVOrderInfo.Items.Clear();
             foreach(KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
                 if(entry.Value != null) {
+                    //THERE COULD BE SOMETHING WRONG HERE
+                    bool contain = true;
+                    foreach (Table tb in entry.Value.Tables)
+                    {
+                        if (!listTableId.Contains(tb.TableId))
+                        {
+                            contain = false;
+                        }
+                    }
                     if (listTableId.Count > 0
-                        && !listTableId.Contains(entry.Value.TableId)) {
+                        && !contain) {
                         continue;
                     }
                     if(UtilFuction.GetTime(entry.Value.CreatedDate) < timeFrom

@@ -34,10 +34,14 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models {
             }
             double currentMoneyOfTable = 0;
             foreach(KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
-                if(entry.Value != null
-                    && entry.Value.TableId == _table.TableId
-                    && (entry.Value.MoneyReceive < entry.Value.BillMoney || entry.Value.BillMoney == 0)) {
-                    currentMoneyOfTable += (double)(entry.Value.BillMoney - entry.Value.MoneyReceive);
+                if (entry.Value != null)
+                {
+                    var included = entry.Value.Tables.Any(t => t.TableId == TableData.TableId);
+                    if (included
+                       && (entry.Value.MoneyReceive < entry.Value.BillMoney || entry.Value.BillMoney == 0))
+                        {
+                            currentMoneyOfTable += (double)(entry.Value.BillMoney - entry.Value.MoneyReceive);
+                        }
                 }
             }
             TextBlockTableId.Text = "Bàn số " + _table.TableId.ToString();
