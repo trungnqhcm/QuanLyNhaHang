@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="550" Width="Auto" Height="60">
-    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="DarkGray" Margin="0,5" Padding="0">
+    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="#41B1E1" Margin="0,5" Padding="0">
         <Grid x:Name="GridParent">
             <Grid.Resources>
                 <ImageSource x:Key="ImageGreenDot">/Resource/Image/Aqua-Ball-Green-icon.png</ImageSource>
@@ -19,7 +19,7 @@
                 <TextBlock x:Name="TextBlockState" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Foreground="White" Margin="10,0,0,0">Đang sử dụng</TextBlock>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <TextBlock x:Name="TextBlockMoney"  Text="5000000 VND" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="Black" FontWeight="Bold" FontSize="18"></TextBlock>
+                <TextBlock x:Name="TextBlockMoney"  Text="5000000 VND" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="White" FontWeight="Bold" FontSize="18"></TextBlock>
                 <Image Source="/Resource/Image/arrow-right.png" Margin="0,0,5,0" Height="20" />
             </StackPanel>
         </Grid>

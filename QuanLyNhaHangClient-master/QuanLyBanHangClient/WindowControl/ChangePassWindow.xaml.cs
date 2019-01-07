@@ -12,13 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace QuanLyBanHangClient.WindowControl
 {
     /// <summary>
     /// Interaction logic for ChangePassWindow.xaml
     /// </summary>
-    public partial class ChangePassWindow : Window
+    public partial class ChangePassWindow : MetroWindow
     {
         string _userName;
         public ChangePassWindow(string userName)

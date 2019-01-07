@@ -82,16 +82,16 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <DockPanel >
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" SelectionChanged="DataGridUnit_SelectionChanged" MouseDoubleClick="DataGridUnit_MouseDoubleClick">
+                            <DockPanel Background="WhiteSmoke" >
+                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" SelectionChanged="DataGridUnit_SelectionChanged" MouseDoubleClick="DataGridUnit_MouseDoubleClick" Background="White">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Đơn vị" Binding="{Binding Name}" Width="*"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </DockPanel>
-                            <DockPanel  Grid.Column="1">
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" DockPanel.Dock="Bottom" SelectionChanged="DataGridIngredient_SelectionChanged" MouseDoubleClick="DataGridIngredient_MouseDoubleClick">
+                            <DockPanel  Grid.Column="1" Background="WhiteSmoke">
+                                <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="0,8,8,8" DockPanel.Dock="Bottom" SelectionChanged="DataGridIngredient_SelectionChanged" MouseDoubleClick="DataGridIngredient_MouseDoubleClick">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>

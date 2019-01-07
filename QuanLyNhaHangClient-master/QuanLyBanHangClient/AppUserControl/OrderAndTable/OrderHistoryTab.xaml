@@ -16,15 +16,6 @@
                         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
                     </Style>
                 </DockPanel.Resources>
-                <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
-                    <TextBlock.Background>
-                        <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="DarkGray"/>
-                            <GradientStop Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Background>
-                Lịch sử đặt món    @
-                </TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -55,11 +46,11 @@
                             </Button>
                             <Border BorderThickness="2" Margin="2" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}" Height="210">
                                 <StackPanel>
-                                    <CheckBox x:Name="CheckBoxSelectTables" Margin="10,5,0,0" IsChecked="True" FontSize="11" HorizontalAlignment="Center" Foreground="White" Checked="CheckBoxSelectTables_Checked" Unchecked="CheckBoxSelectTables_Unchecked">
+                                    <CheckBox x:Name="CheckBoxSelectTables" Margin="10,5,0,0" IsChecked="True" FontSize="11" HorizontalAlignment="Center" Checked="CheckBoxSelectTables_Checked" Unchecked="CheckBoxSelectTables_Unchecked" Background="White">
                                         <Underline>Lọc theo bàn</Underline>
                                     </CheckBox>
-                                    <ListView x:Name="LVFilterTable" Width="160" Height="80"  Background="Transparent" />
-                                    <CheckBox x:Name="CheckBoxFilterDate" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="11"  Unchecked="CheckBoxFilterDate_Unchecked" Checked="CheckBoxFilterDate_Checked" >
+                                    <ListView x:Name="LVFilterTable" Width="160" Height="80"  Background="Transparent" BorderBrush="{x:Null}" />
+                                    <CheckBox x:Name="CheckBoxFilterDate" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="11"  Unchecked="CheckBoxFilterDate_Unchecked" Checked="CheckBoxFilterDate_Checked" >
                                         <Underline>Lọc theo ngày</Underline>
                                     </CheckBox>
                                     <StackPanel x:Name="FilterDateGroup" Visibility="Hidden">
@@ -78,7 +69,7 @@
                     </Border>
                     <Border Grid.Column="1" BorderThickness="2" Margin="10" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
                         <Grid>
-                            <ListView x:Name="LVOrderInfo" Background="Transparent" Grid.Row="1">
+                            <ListView x:Name="LVOrderInfo" Background="Transparent" Grid.Row="1" BorderBrush="{x:Null}">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

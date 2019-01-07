@@ -61,7 +61,7 @@
                             </StackPanel>
                         </Border>
                         <Border Grid.Column="1" BorderThickness="1" Margin="10" BorderBrush="WhiteSmoke" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
-                            <ListView x:Name="LVTable" Background="Transparent" SelectionChanged="LVTable_SelectionChanged">
+                            <ListView x:Name="LVTable" Background="Transparent" SelectionChanged="LVTable_SelectionChanged" BorderBrush="{x:Null}">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

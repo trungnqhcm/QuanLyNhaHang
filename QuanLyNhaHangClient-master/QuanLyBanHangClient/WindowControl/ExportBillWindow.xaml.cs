@@ -15,12 +15,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace QuanLyBanHangClient.WindowControl {
     /// <summary>
     /// Interaction logic for ExportBillWindow.xaml
     /// </summary>
-    public partial class ExportBillWindow : Window {
+    public partial class ExportBillWindow : MetroWindow {
         List<Order> _orderList = null;
         Action _afterConfirm;
         public ExportBillWindow(List<Order> orderList, Action afterConfirm) {

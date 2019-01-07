@@ -19,12 +19,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using Microsoft.Win32;
+using MahApps.Metro.Controls;
+
 
 namespace QuanLyBanHangClient.WindowControl {
     /// <summary>
     /// Interaction logic for FoodDetail.xaml
     /// </summary>
-    public partial class FoodDetail : Window {
+    public partial class FoodDetail : MetroWindow
+ {
         private int _foodDetailId = Constant.ID_CREATE_NEW;
         private FoodTab _foodTab = null;
         private ObservableCollection<IngredientWithFoodTable> _ingredientsWithFood = new ObservableCollection<IngredientWithFoodTable>();
@@ -247,6 +250,11 @@ namespace QuanLyBanHangClient.WindowControl {
             if(ComboBoxIngredient.SelectedIndex >= 0) {
                 TextBlockUnit.Text = UnitManager.getInstance().UnitList[IngredientManager.getInstance().IngredientList[((ComboData)ComboBoxIngredient.SelectedItem).Id].UnitId].Name;
             }
+        }
+
+        private void BtnCopy_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
