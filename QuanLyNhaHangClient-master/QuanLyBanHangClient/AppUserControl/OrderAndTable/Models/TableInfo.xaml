@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:QuanLyBanHangClient.AppUserControl.OrderTab.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="550" Width="Auto" Height="60">
-    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Background="#41B1E1" Margin="0,5" Padding="0">
-        <Grid x:Name="GridParent">
+    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White"  Margin="0,5" Padding="0">
+        <Grid x:Name="GridParent" Background="#41B1E1">
             <Grid.Resources>
                 <ImageSource x:Key="ImageGreenDot">/Resource/Image/Aqua-Ball-Green-icon.png</ImageSource>
                 <ImageSource x:Key="ImageGrayDot">/Resource/Image/Button-Blank-Gray-icon.png</ImageSource>
@@ -15,7 +15,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="TextBlockTableId" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" Margin="20,0,0,0" Width="100" TextDecorations="{x:Null}">Bàn số 5</TextBlock>
                 <Line X1="0" Y1="0" X2="0" Y2="50"  Stroke="White" StrokeThickness="3" />
-                <Image x:Name="ImageState" Margin="15,0,0,0" Height="20" Source="{StaticResource ImageGrayDot}" > </Image>
+                
                 <TextBlock x:Name="TextBlockState" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" Foreground="White" Margin="10,0,0,0">Đang sử dụng</TextBlock>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">

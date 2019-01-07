@@ -8,10 +8,18 @@ namespace QuanLyNhaHangServer.Models
 {
     public class CurrentIngredient :BaseModel
     {
-        ///
-        public long IngredientId { get; set; }
+        public String Name { get; set; }
+        public long UnitId { get; set; }
+        public int Quantity { get; set; }
 
-        [ForeignKey("IngredientId")]
-        public virtual Ingredient Ingredient { get; set; }
+        [ForeignKey("UnitId")]
+        public virtual Unit Unit { get; set; }
+
+        public CurrentIngredient(Ingredient ingredient)
+        {
+            Name = ingredient.Name;
+            UnitId = ingredient.UnitId;
+            Unit = ingredient.Unit;
+        }
     }
 }

@@ -11,15 +11,6 @@
     <Border BorderBrush="{StaticResource MainSolidColor}" CornerRadius="{StaticResource CornerRadiusValue}" Background="{StaticResource MainSolidColor}">
         <Grid>
             <DockPanel>
-                <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
-                    <TextBlock.Background>
-                        <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="DarkGray"/>
-                            <GradientStop Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Background>
-                Nhập nguyên liệu    @
-                </TextBlock>
                 <Grid Margin="5,10,5,5">
                     <TabControl x:Name="TabControlMain" TabStripPlacement="Top" BorderThickness="0" HorizontalContentAlignment="Center" DockPanel.Dock="Top"  Background="Transparent" SelectionChanged="TabControlMain_SelectionChanged" >
                         <TabControl.Resources>
@@ -69,19 +60,19 @@
                                 </Style.Triggers>
                             </Style>
                         </TabControl.Resources>
-                        <TabItem x:Name="TabImportIngredient">
+                        <TabItem x:Name="TabImportIngredient" Visibility="Hidden">
                             <TabItem.Header>
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Nhập nguyên liệu</TextBlock>
                             </TabItem.Header>
-                            <importtab:ImportTab/>
+                            <importtab:ImportTab Loaded="ImportTab_Loaded_2"/>
                         </TabItem>
-                        <TabItem x:Name="TabHistory">
+                        <TabItem x:Name="TabHistory" Visibility="Hidden">
                             <TabItem.Header>
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Lịch sử nhập</TextBlock>
                             </TabItem.Header>
                             <historytab:ImportHistoryTab/>
                         </TabItem>
-                        <TabItem x:Name="TabDetail">
+                        <TabItem x:Name="TabDetail" Visibility="Hidden">
                             <TabItem.Header>
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Chi tiết nhập</TextBlock>
                             </TabItem.Header>
