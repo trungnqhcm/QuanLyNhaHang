@@ -106,7 +106,7 @@
                                     <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" Visibility="Hidden">Giá</TextBlock>
                                     <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" Visibility="Hidden">Loại</TextBlock>
                                 </Grid>
-                                <ListView x:Name="LVFood" Background="WhiteSmoke" BorderBrush="#00ABADB3" Margin="8,-16,8,8">
+                                <ListView x:Name="LVFood" Background="WhiteSmoke" BorderBrush="#00ABADB3" Margin="8,-16,8,8" SelectionChanged="LVFood_SelectionChanged">
                                     <ListView.ItemContainerStyle>
                                         <Style TargetType="ListViewItem">
                                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

@@ -94,6 +94,10 @@ namespace QuanLyNhaHangServer.Controllers
             }
 
             _context.Ingredients.Add(ingredient);
+            CurrentIngredient currentIngredient = new CurrentIngredient(ingredient);
+
+            //POST: api/CurrentIngredient
+            _context.CurrentIngredients.Add(currentIngredient);
             await _context.SaveChangesAsync();
             var jObject = Utils.getJObjectResponseFromObject(true, ingredient);
             return CreatedAtAction("GetIngredient", new { id = ingredient.Id }, jObject);

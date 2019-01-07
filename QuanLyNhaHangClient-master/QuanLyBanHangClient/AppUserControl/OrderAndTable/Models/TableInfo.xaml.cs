@@ -46,14 +46,16 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab.Models {
             }
             TextBlockTableId.Text = "Bàn số " + _table.TableId.ToString();
             if (currentMoneyOfTable > 0) {
-                ImageState.Source = (ImageSource)GridParent.FindResource("ImageGreenDot");
+                //ImageState.Source = (ImageSource)GridParent.FindResource("ImageGreenDot");
+                GridParent.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4FB99F"));
 
                 TextBlockState.Text = "Đang sử dụng";
-                TextBlockState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF18FA00"));
+                //TextBlockState.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF18FA00"));
+
 
                 TextBlockMoney.Text = UtilFuction.formatMoney((decimal)currentMoneyOfTable) + " VND";
             } else {
-                ImageState.Source = (ImageSource)GridParent.FindResource("ImageGrayDot");
+                //ImageState.Source = (ImageSource)GridParent.FindResource("ImageGrayDot");
 
                 TextBlockState.Text = "Chưa sử dụng";
                 TextBlockState.Foreground = new SolidColorBrush(Colors.White);

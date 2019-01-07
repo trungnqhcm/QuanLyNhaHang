@@ -22,22 +22,22 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab {
     public partial class ImportIngredientTab : UserControl {
         public ImportIngredientTab() {
             InitializeComponent();
-            ((ImportTab.ImportTab)(TabImportIngredient.Content)).ParentTab = this;
-            ((ImportHistoryTab.ImportHistoryTab)(TabHistory.Content)).ParentTab = this;
-            ((ImportDetailTab.ImportDetailTab)(TabDetail.Content)).ParentTab = this;
+            //((ImportTab.ImportTab)(TabImportIngredient.Content)).ParentTab = this;
+            //((ImportHistoryTab.ImportHistoryTab)(TabHistory.Content)).ParentTab = this;
+            //((ImportDetailTab.ImportDetailTab)(TabDetail.Content)).ParentTab = this;
         }
         public void reloadDetailTab(ImportBill importBill) {
-            ((ImportDetailTab.ImportDetailTab)(TabDetail.Content)).reloadUI(importBill);
+            //((ImportDetailTab.ImportDetailTab)(TabDetail.Content)).reloadUI(importBill);
         }
         public void goToDetailTab() {
-            TabControlMain.SelectedItem = TabDetail;
+            //TabControlMain.SelectedItem = TabDetail;
         }
 
         private void TabControlMain_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (TabHistory.IsSelected
-                && ImportBillManager.getInstance().ImportBillList.Count <= 0) {
-                ((ImportHistoryTab.ImportHistoryTab)(TabHistory.Content)).getFromServerAndReloadUI();
-            }
+            //if (TabHistory.IsSelected
+            //    && ImportBillManager.getInstance().ImportBillList.Count <= 0) {
+            //    ((ImportHistoryTab.ImportHistoryTab)(TabHistory.Content)).getFromServerAndReloadUI();
+            //}
         }
 
         private void ImportTab_Loaded(object sender, RoutedEventArgs e)
@@ -46,6 +46,11 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab {
         }
 
         private void ImportTab_Loaded_1(object sender)
+        {
+
+        }
+
+        private void ImportTab_Loaded_2(object sender, RoutedEventArgs e)
         {
 
         }

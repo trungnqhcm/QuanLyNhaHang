@@ -71,13 +71,13 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
             TextBoxTotal.Text = UtilFuction.formatMoney(price * quantity);
         }
         private void reloadTotalBill() {
-            decimal totalBill = 0;
-            var ingredientWithImportBillList = new List<IngredientWithImportBill>();
-            foreach (ImportIngredientCell importIngredientCell in LVIngredient.Items.OfType<ImportIngredientCell>()) {
-                ingredientWithImportBillList.Add(importIngredientCell._ingredientWithImportBill);
-                totalBill += (importIngredientCell._ingredientWithImportBill.SinglePricePerUnit * (decimal)importIngredientCell._ingredientWithImportBill.Quantities);
-            }
-            TextBlockTotal.Text = "Tổng cộng: " + UtilFuction.formatMoney(totalBill) + " VND";
+            //decimal totalBill = 0;
+            //var ingredientWithImportBillList = new List<IngredientWithImportBill>();
+            //foreach (ImportIngredientCell importIngredientCell in LVIngredient.Items.OfType<ImportIngredientCell>()) {
+            //    ingredientWithImportBillList.Add(importIngredientCell._ingredientWithImportBill);
+            //    totalBill += (importIngredientCell._ingredientWithImportBill.SinglePricePerUnit * (decimal)importIngredientCell._ingredientWithImportBill.Quantities);
+            //}
+            //TextBlockTotal.Text = "Tổng cộng: " + UtilFuction.formatMoney(totalBill) + " VND";
         }
         private void TextBoxPrice_TextChanged(object sender, TextChangedEventArgs e) {
             checkAndReloadTotal();
@@ -88,71 +88,71 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab.ImportTab
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e) {
-            if (ComboBoxIngredient.SelectedIndex < 0
-                || TextBoxTotal.Text == "0"
-                || string.IsNullOrEmpty(TextBoxTotal.Text)) {
-                WindownsManager.getInstance().showMessageBoxSomeThingWrong();
-                return;
-            }
-            decimal quantity = 0;
-            decimal.TryParse(TextBoxQuantity.Text, out quantity);
+            //if (ComboBoxIngredient.SelectedIndex < 0
+            //    || TextBoxTotal.Text == "0"
+            //    || string.IsNullOrEmpty(TextBoxTotal.Text)) {
+            //    WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+            //    return;
+            //}
+            //decimal quantity = 0;
+            //decimal.TryParse(TextBoxQuantity.Text, out quantity);
 
-            decimal price = 0;
-            decimal.TryParse(TextBoxPrice.Text, out price);
+            //decimal price = 0;
+            //decimal.TryParse(TextBoxPrice.Text, out price);
 
-            var ingredientId = (int)((ComboBoxItem)ComboBoxIngredient.SelectedItem).Tag;
+            //var ingredientId = (int)((ComboBoxItem)ComboBoxIngredient.SelectedItem).Tag;
 
-            var importIngredientWithBill = new IngredientWithImportBill();
-            importIngredientWithBill.IngredientId = ingredientId;
-            importIngredientWithBill.Ingredient = IngredientManager.getInstance().IngredientList[ingredientId];
-            importIngredientWithBill.Quantities = (float)quantity;
-            importIngredientWithBill.SinglePricePerUnit = price;
+            //var importIngredientWithBill = new IngredientWithImportBill();
+            //importIngredientWithBill.IngredientId = ingredientId;
+            //importIngredientWithBill.Ingredient = IngredientManager.getInstance().IngredientList[ingredientId];
+            //importIngredientWithBill.Quantities = (float)quantity;
+            //importIngredientWithBill.SinglePricePerUnit = price;
 
-            LVIngredient.Items.Add(new ImportIngredientCell(importIngredientWithBill, this));
-            reloadTotalBill();
+            //LVIngredient.Items.Add(new ImportIngredientCell(importIngredientWithBill, this));
+            //reloadTotalBill();
         }
         private void BtnImport_Click(object sender, RoutedEventArgs e) {
-            RequestManager.getInstance().showLoading();
-            Action<NetworkResponse> cbSuccessSent =
-                    delegate (NetworkResponse networkResponse) {
-                        if (!networkResponse.Successful) {
-                            WindownsManager.getInstance().showMessageBoxSomeThingWrong();
-                        } else {
-                            LVIngredient.Items.Clear();
-                            reloadTotalBill();
-                        }
-                        RequestManager.getInstance().hideLoading();
-                    };
+            //RequestManager.getInstance().showLoading();
+            //Action<NetworkResponse> cbSuccessSent =
+            //        delegate (NetworkResponse networkResponse) {
+            //            if (!networkResponse.Successful) {
+            //                WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+            //            } else {
+            //                LVIngredient.Items.Clear();
+            //                reloadTotalBill();
+            //            }
+            //            RequestManager.getInstance().hideLoading();
+            //        };
 
-            Action<string> cbError =
-                    delegate (string err) {
-                        WindownsManager.getInstance().showMessageBoxErrorNetwork();
-                        RequestManager.getInstance().hideLoading();
-                    };
-            var ingredientWithImportBillList = new List<IngredientWithImportBill>();
-            foreach (ImportIngredientCell importIngredientCell in LVIngredient.Items.OfType<ImportIngredientCell>()) {
-                ingredientWithImportBillList.Add(new IngredientWithImportBill()
-                {
-                    IngredientId = importIngredientCell._ingredientWithImportBill.Ingredient.IngredientId,
-                    SinglePricePerUnit = importIngredientCell._ingredientWithImportBill.SinglePricePerUnit,
-                    Quantities = importIngredientCell._ingredientWithImportBill.Quantities
-                });
-            }
-            ImportBillManager.getInstance().createImportBillFromServerAndUpdate(
-                ingredientWithImportBillList,
-                cbSuccessSent,
-                cbError
-                );
+            //Action<string> cbError =
+            //        delegate (string err) {
+            //            WindownsManager.getInstance().showMessageBoxErrorNetwork();
+            //            RequestManager.getInstance().hideLoading();
+            //        };
+            //var ingredientWithImportBillList = new List<IngredientWithImportBill>();
+            //foreach (ImportIngredientCell importIngredientCell in LVIngredient.Items.OfType<ImportIngredientCell>()) {
+            //    ingredientWithImportBillList.Add(new IngredientWithImportBill()
+            //    {
+            //        IngredientId = importIngredientCell._ingredientWithImportBill.Ingredient.IngredientId,
+            //        SinglePricePerUnit = importIngredientCell._ingredientWithImportBill.SinglePricePerUnit,
+            //        Quantities = importIngredientCell._ingredientWithImportBill.Quantities
+            //    });
+            //}
+            //ImportBillManager.getInstance().createImportBillFromServerAndUpdate(
+            //    ingredientWithImportBillList,
+            //    cbSuccessSent,
+            //    cbError
+            //    );
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e) {
-            LVIngredient.Items.Clear();
-            reloadTotalBill();
+            //LVIngredient.Items.Clear();
+            //reloadTotalBill();
         }
 
         public void removeItemLV(ImportIngredientCell importIngredientCell) {
-            LVIngredient.Items.Remove(importIngredientCell);
-            reloadTotalBill();
+            //LVIngredient.Items.Remove(importIngredientCell);
+            //reloadTotalBill();
         }
     }
 }

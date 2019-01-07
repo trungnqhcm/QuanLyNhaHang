@@ -14,8 +14,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel>
-                <DockPanel Margin="50,30,0,0">
+            <StackPanel Margin="0,-42,0,0.5">
+                <DockPanel Margin="50,30,0,0" Visibility="Hidden">
                     <Button x:Name="BtnCopy" FontSize="11" Width="80" Content="Sao chép" Click="BtnCopy_Click"/>
                     <!--<ComboBox x:Name="ComboBoxFoodCopy" Style="{StaticResource ComboBoxFlatStyle}" Margin="40,0,62,0" DockPanel.Dock="Right" HorizontalAlignment="Left" Width="295" VerticalContentAlignment="Center"/>-->
                     <custom:ComboBoxRoundedImage x:Name="ComboBoxFoodCopy" Margin="40,0,0,0" Width="295">
