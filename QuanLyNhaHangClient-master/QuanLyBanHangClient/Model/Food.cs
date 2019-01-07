@@ -11,7 +11,6 @@ namespace QuanLyBanHangAPI.model
     public class Food
     {
         [JsonProperty("Id")]
-        public int ImageId { get; set; }
         public int FoodId { get; set; }
         public Food()
         {

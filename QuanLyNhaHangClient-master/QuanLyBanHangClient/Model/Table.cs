@@ -9,7 +9,6 @@ namespace QuanLyBanHangAPI.model
 {
     public class Table
     {
-        [JsonProperty("Id")]
         public int TableId { get; set; }
 
         public Table()
