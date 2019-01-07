@@ -20,23 +20,27 @@
                 <RowDefinition Height="571*"/>
             </Grid.RowDefinitions>
             <DockPanel Margin="0,0,0,0.5" Grid.RowSpan="2">
-                <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" Margin="4,4,4,4">
+                <Border DockPanel.Dock="Top" CornerRadius="1,1,1,1" Margin="4,4,4,4">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Button x:Name="ButttonUser" Style="{StaticResource BtnBorderStyle}" Click="ButttonUser_Click">
+                       
+                        <Button x:Name="BtnInfo" Width="200" Margin="16,0,16,0" Click="BtnInfo_Click" BorderBrush="{x:Null}" Background="{x:Null}" FontWeight="Normal" FontSize="16">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Foreground="Black" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,0,0,0">Tài khoản:</TextBlock>
-                                <TextBlock FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Red" Margin="10,0,0,0" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
+                                <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Normal" FontSize="16"><Run Text="Thông tin nhà hàng"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="ButttonUser" Click="ButttonUser_Click" FontSize="16" FontWeight="Normal" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Normal" Margin="8,0,0,0" FontSize="16">Tài khoản:</TextBlock>
+                                <TextBlock FontSize="16" FontWeight="Bold" Foreground="Black" Margin="8,0,8,0" TextDecorations="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
                                 <Image x:Name="ImageArrowAccount" Source="/Resource/Image/arrow-down.png" Margin="10,2,0,0" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Button>
-                        <Button x:Name="BtnChangePass" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
-                        <Button x:Name="BtnInfo" Style="{StaticResource BtnBorderStyle}" Width="150" Margin="20,0,0,0" Click="BtnInfo_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="/Resource/Image/info-icon.png" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20"/>
-                                <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="Thông tin nhà hàng"/></TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click">Đăng xuất</Button>
+
+                        <Button x:Name="BtnChangePass"  Width="160" Margin="8,0,0,0" Visibility="Collapsed" Click="BtnChangePass_Click" FontWeight="Normal" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}" >Đổi mật khẩu</Button>
+
+                        <Button x:Name="BtnLogout"  Width="160" Margin="8,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click" FontWeight="Normal" FontSize="16" Background="{x:Null}" BorderBrush="{x:Null}">Đăng xuất</Button>
+                    
                     </StackPanel>
 
                 </Border>
@@ -48,7 +52,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="TabItem">
-                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Black" CornerRadius="2,2,0,0" Margin="2,0,0,-4">
+                                        <Border Name="Border" BorderThickness="0.5,0.5,0.5,0" BorderBrush="White" CornerRadius="2,2,0,0" Margin="2,0,0,-2">
                                             <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -59,15 +63,13 @@
                                             <Trigger Property="IsSelected" Value="True">
                                                 <Setter TargetName="Border" Property="Background">
                                                     <Setter.Value>
-                                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                            <GradientStop Color="{StaticResource MainColor}" Offset="0.7"/>
-                                                            <GradientStop Color="#FFE2E2E2" Offset="0"/>
-                                                        </LinearGradientBrush>
+                                                        <SolidColorBrush Color="DarkGray"></SolidColorBrush>
                                                     </Setter.Value>
                                                 </Setter>
                                             </Trigger>
                                             <Trigger Property="IsSelected" Value="False">
                                                 <Setter TargetName="Border" Property="Background" Value="White" />
+                                           
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
@@ -94,7 +96,7 @@
                                 <TextBlock Style="{StaticResource HeaderTextBlockStyle}">Đặt món</TextBlock>
                             </StackPanel>
                         </TabItem.Header>
-                        <ordertab:OrderAndTableTab/>
+                        <ordertab:OrderAndTableTab Loaded="OrderAndTableTab_Loaded"/>
                     </TabItem>
                     <TabItem x:Name="TabItemFood" >
                         <TabItem.Header>

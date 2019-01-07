@@ -13,15 +13,7 @@
                         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
                     </Style>
                 </DockPanel.Resources>
-                <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
-                    <TextBlock.Background>
-                        <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="DarkGray"/>
-                            <GradientStop Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Background>
-                Báo cáo    @
-                </TextBlock>
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

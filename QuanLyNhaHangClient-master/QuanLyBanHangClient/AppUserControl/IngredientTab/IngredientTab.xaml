@@ -14,92 +14,76 @@
                         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
                     </Style>
                 </DockPanel.Resources>
-                <TextBlock DockPanel.Dock="Top" Margin="50,10,0,0" Foreground="White" FontWeight="Bold" TextAlignment="Right">
-                    <TextBlock.Background>
-                        <LinearGradientBrush EndPoint="0,0.5" StartPoint="1,0.5">
-                            <GradientStop Color="DarkGray"/>
-                            <GradientStop Offset="1"/>
-                        </LinearGradientBrush>
-                    </TextBlock.Background>
-                Nguyên liệu và đơn vị    @
-                </TextBlock>
+
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="3.0*" />
                     </Grid.ColumnDefinitions>
-                    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="2" BorderBrush="White" Margin="10,10,0,10">
+                    <Border CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" BorderBrush="WhiteSmoke" Margin="10,10,0,10">
                         <StackPanel Grid.Column="0">
 
                             <Button x:Name="BtnRefresh" Style="{StaticResource BtnInSideBarStyle}" Margin="0" BorderThickness="0,0,0,1" Click="BtnRefresh_Click">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Tải lại</TextBlock>
                                     <Image Source="/Resource/Image/refresh-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            
-                            <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" BorderBrush="White" Margin="5,5,5,0">
+
+                            <Border Height="40" CornerRadius="{StaticResource CornerRadiusValue}" BorderThickness="1" Margin="5,5,5,0">
                                 <Grid>
-                                    <TextBox x:Name="TextBoxSearch" Margin="40,9,26.5,9"  VerticalContentAlignment="Center" VerticalAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
+                                    <TextBox x:Name="TextBoxSearch" Margin="40,0,10.5,0"  VerticalContentAlignment="Center" TextChanged="TextBoxSearch_TextChanged" />
                                     <Image Source="/Resource/Image/search-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
                                 </Grid>
                             </Border>
 
-                            <Button x:Name="BtnAddIngredient" Style="{StaticResource BtnInSideBarStyle}" Click="BtnAddIngredient_Click">
+                            <Button x:Name="BtnAddIngredient" Style="{StaticResource BtnInSideBarStyle}" Click="BtnAddIngredient_Click" Margin="16,16,16,8">
                                 <Grid>
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Thêm nguyên liệu</TextBlock>
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Margin="35,11,20.5,8">Thêm nguyên liệu</TextBlock>
                                     <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            <Button x:Name="BtnRemoveIngredient" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnRemoveIngredient_Click" IsEnabled="False">
+                            <Button x:Name="BtnRemoveIngredient" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnRemoveIngredient_Click" IsEnabled="False" Margin="16,0,16,8">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Xóa nguyên liệu</TextBlock>
                                     <Image Source="/Resource/Image/remove-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            <Button x:Name="BtnEditIngredient" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnEditIngredient_Click">
+                            <Button x:Name="BtnEditIngredient" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnEditIngredient_Click" Margin="16,0">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Sửa nguyên liệu</TextBlock>
                                     <Image Source="/Resource/Image/detail-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
 
-                            <Button x:Name="BtnAddUnit" Style="{StaticResource BtnInSideBarStyle}" Margin="5,25,5,5" Click="BtnAddUnit_Click">
+                            <Button x:Name="BtnAddUnit" Style="{StaticResource BtnInSideBarStyle}" Margin="16,32,16,0" Click="BtnAddUnit_Click">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14">Thêm đơn vị</TextBlock>
                                     <Image Source="/Resource/Image/add-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            <Button x:Name="BtnRemoveUnit" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnRemoveUnit_Click" IsEnabled="False">
+                            <Button x:Name="BtnRemoveUnit" Style="{StaticResource BtnInSideBarStyle}" Height="40" Click="BtnRemoveUnit_Click" IsEnabled="False" Margin="16,8">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Xóa đơn vị</TextBlock>
                                     <Image Source="/Resource/Image/remove-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
-                            <Button x:Name="BtnEditUnit" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnEditUnit_Click">
+                            <Button x:Name="BtnEditUnit" Style="{StaticResource BtnInSideBarStyle}" Height="40" IsEnabled="False" Click="BtnEditUnit_Click" Margin="16,0,16,8">
                                 <Grid>
                                     <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">Sửa đơn vị</TextBlock>
                                     <Image Source="/Resource/Image/detail-icon.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0" Width="20"/>
-                                    <Image Source="/Resource/Image/arrow-right.png" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Width="20"/>
                                 </Grid>
                             </Button>
                         </StackPanel>
                     </Border>
-                    <Border Grid.Column="1" BorderThickness="2" Margin="10" BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
+                    <Border Grid.Column="1" BorderThickness="1" Margin="10" BorderBrush="WhiteSmoke" CornerRadius="{StaticResource CornerRadiusValue}" ClipToBounds="True" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
                             <DockPanel >
-                                <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách đơn vị</TextBlock>
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" SelectionChanged="DataGridUnit_SelectionChanged" MouseDoubleClick="DataGridUnit_MouseDoubleClick">
+                                <DataGrid TextSearch.Text="Cơm" Name="DataGridUnit" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" SelectionChanged="DataGridUnit_SelectionChanged" MouseDoubleClick="DataGridUnit_MouseDoubleClick">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Đơn vị" Binding="{Binding Name}" Width="*"/>
@@ -107,8 +91,7 @@
                                 </DataGrid>
                             </DockPanel>
                             <DockPanel  Grid.Column="1">
-                                <TextBlock Foreground="White" FontSize="16" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" TextDecorations="Underline" DockPanel.Dock="Top">Danh sách nguyên liệu</TextBlock>
-                                <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="5" DockPanel.Dock="Bottom" SelectionChanged="DataGridIngredient_SelectionChanged" MouseDoubleClick="DataGridIngredient_MouseDoubleClick">
+                                <DataGrid TextSearch.Text="Cơm" Name="DataGridIngredient" AutoGenerateColumns="False" IsReadOnly="True" IsTextSearchEnabled="True" Margin="8" DockPanel.Dock="Bottom" SelectionChanged="DataGridIngredient_SelectionChanged" MouseDoubleClick="DataGridIngredient_MouseDoubleClick">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                                         <DataGridTextColumn Header="Nguyên liệu" Binding="{Binding Name}" Width="2*"/>

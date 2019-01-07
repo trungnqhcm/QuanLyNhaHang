@@ -126,5 +126,10 @@ namespace QuanLyBanHangClient
         {
 
         }
+
+        private void OrderAndTableTab_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

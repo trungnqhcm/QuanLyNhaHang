@@ -44,5 +44,10 @@ namespace QuanLyBanHangClient.AppUserControl.ImportIngredientTab {
         {
 
         }
+
+        private void ImportTab_Loaded_1(object sender)
+        {
+
+        }
     }
 }

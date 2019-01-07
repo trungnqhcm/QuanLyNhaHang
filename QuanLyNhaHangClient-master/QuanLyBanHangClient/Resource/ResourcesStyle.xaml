@@ -5,27 +5,27 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
 
     <SolidColorBrush 
                 x:Key="MainSolidColor"
-                Color="LightGray"/>
-    <Color x:Key="MainColor">#d3d3d3</Color>
+                Color="DarkGray"/>
+    <Color x:Key="MainColor">#FFF5F5F5</Color>
     <!-- String resource that can be localized -->
     <CornerRadius x:Key="CornerRadiusValue" 
-               TopLeft= "2" 
-               TopRight="2"
-               BottomRight="2"
-               BottomLeft= "2" />
+               TopLeft= "1" 
+               TopRight="1"
+               BottomRight="1"
+               BottomLeft= "1" />
     <Thickness x:Key="ThicknessValue1"
-               Top = "1" 
-               Bottom ="1"
-               Right ="1"
-               Left = "1" />
+               Top = "0.5" 
+               Bottom ="0.5"
+               Right ="0.5"
+               Left = "0.5" />
     <Thickness x:Key="ThicknessValue2"
-               Top = "2" 
-               Bottom ="2"
-               Right ="2"
-               Left = "2" />
+               Top = "0.5" 
+               Bottom ="0.5"
+               Right ="0.5"
+               Left = "0.5" />
     <SolidColorBrush 
                 x:Key="BorderColor"
-                Color="#FF000000"/>
+                Color="Black"/>
 
     <ControlTemplate x:Key="TextBoxRoundedTemplate" TargetType="{x:Type TextBoxBase}">
         <Border Background="{TemplateBinding Background}" 
@@ -50,7 +50,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
     <ControlTemplate x:Key="TextBoxRoundedCBBTemplate" TargetType="{x:Type TextBoxBase}">
         <Border Background="{TemplateBinding Background}" 
                 x:Name="Bd" BorderBrush="White"
-                BorderThickness="0" CornerRadius="8">
+                BorderThickness="0" CornerRadius="1">
             <ScrollViewer x:Name="PART_ContentHost"/>
         </Border>
         <ControlTemplate.Triggers>
@@ -90,7 +90,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
     <Style x:Key="BorderGreen" TargetType="Border">
         <Setter Property="CornerRadius" Value="{StaticResource CornerRadiusValue}"/>
         <Setter Property="Padding" Value="2"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0.5"/>
         <Setter Property="BorderBrush" >
             <Setter.Value>
                 <SolidColorBrush Color="Black"></SolidColorBrush>
@@ -104,7 +104,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Name="Border" Style="{StaticResource BorderGreen}" Background="{TemplateBinding Background}">
+                    <Border Name="Border"  Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
@@ -112,7 +112,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFF0D7D7"/>
+                <Setter Property="Background" Value="White"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -162,7 +162,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"  BorderBrush="White" CornerRadius="{StaticResource CornerRadiusValue}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}"  BorderBrush="WhiteSmoke" CornerRadius="{StaticResource CornerRadiusValue}">
                         <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Border>
                 </ControlTemplate>
@@ -434,7 +434,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib"
                         Name="Border"
                         Padding="5"
                         Margin="2"
-                        BorderThickness="2,0,0,0"
+                        BorderThickness="1,0,0,0"
                         CornerRadius="0"
                         Background="Transparent"
                         BorderBrush="Transparent">

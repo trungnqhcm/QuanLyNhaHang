@@ -23,13 +23,9 @@
 
             <Grid DockPanel.Dock="Bottom">
                 <Border BorderBrush="White" Height="50" Padding="2" Margin="2" BorderThickness="1" >
-                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="Underline">
-                                    Thành tiền: 270000 VND
-                    </TextBlock>
+                    <TextBlock x:Name="TextBlockTotal" DockPanel.Dock="Bottom" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontSize="20" FontWeight="Bold" TextDecorations="{x:Null}" Text="Thành tiền: 270000 VND"/>
                 </Border>
-                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnImport_Click" FontWeight="Bold" Margin="0,2,2,2">
-                    NHẬP >>
-                </Button>
+                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnImport" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnImport_Click" FontWeight="Bold" Margin="0,8,8,8" Content="NHẬP "/>
             </Grid>
             
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" >
