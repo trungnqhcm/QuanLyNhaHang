@@ -12,7 +12,7 @@
         xmlns:importingredienttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ImportIngredientTab"
         xmlns:preparefoodtab="clr-namespace:QuanLyBanHangClient.AppUserControl.PrepareFoodTab"
         xmlns:reporttab="clr-namespace:QuanLyBanHangClient.AppUserControl.ReportTab"
-        mc:Ignorable="d" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1200" MinHeight="770" Width="1200" Height="770">
+        mc:Ignorable="d" WindowState="Maximized" WindowStartupLocation="CenterScreen" MinWidth="1200" MinHeight="770" Width="1200" Height="770" Title="Quản lý nhà hàng">
     <Border Background="#FF41B1E1">
         <Grid>
             <Grid.RowDefinitions>

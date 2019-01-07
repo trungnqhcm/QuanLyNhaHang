@@ -53,12 +53,6 @@ namespace QuanLyBanHangClient.AppUserControl.Custom {
             item.Style = (Style) Application.Current.FindResource("ComboBoxItemRoundedStyle");
 
             var dock = new DockPanel();
-            var image = new Image();
-            image.Name = "ImageData";
-            image.Source = imgSrc;
-            image.Width = ImageSize.Width;
-            image.Height = ImageSize.Height;
-            image.Stretch = Stretch.Fill;
 
             var txtBlock = new TextBlock();
             txtBlock.Name = "TextBlockData";
@@ -66,8 +60,6 @@ namespace QuanLyBanHangClient.AppUserControl.Custom {
             txtBlock.VerticalAlignment = VerticalAlignment.Center;
             txtBlock.TextWrapping = TextWrapping.Wrap;
             txtBlock.Text = txt;
-
-            dock.Children.Add(image);
             dock.Children.Add(txtBlock);
 
             item.Content = dock;
@@ -81,7 +73,7 @@ namespace QuanLyBanHangClient.AppUserControl.Custom {
             cv.Filter = o => {
                 /* change to get data row value */
                 ComboBoxItem p = o as ComboBoxItem;
-                var txt = ((TextBlock)((DockPanel)p.Content).Children[1]).Text;
+                var txt = ((TextBlock)((DockPanel)p.Content).Children[0]).Text;
 
                 if (!string.IsNullOrEmpty(filterText)
                 && !_isChangeTextFromCode) {
@@ -101,10 +93,8 @@ namespace QuanLyBanHangClient.AppUserControl.Custom {
             }
 
             var itemSelected = ((ComboBoxItem)ComboBoxData.SelectedItem);
-            var txt = ((TextBlock)((DockPanel)itemSelected.Content).Children[1]).Text;
-            var imageSrc = ((Image)((DockPanel)itemSelected.Content).Children[0]).Source;
+            var txt = ((TextBlock)((DockPanel)itemSelected.Content).Children[0]).Text;
 
-            ImageSearch.Source = imageSrc;
             _isChangeTextFromCode = true;
             TextBoxSearch.Text = txt;
 
