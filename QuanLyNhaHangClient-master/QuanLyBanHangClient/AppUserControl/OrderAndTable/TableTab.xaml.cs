@@ -53,6 +53,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             }
             BtnRemoveTable.IsEnabled = true;
             TextBoxCurrentTableId.Text = ((TableInfo)LVTable.SelectedItem).TableData.TableId.ToString();
+            BtnMerge.IsEnabled = true;
         }
 
         private void BtnAdd_Click(object sender, System.Windows.RoutedEventArgs e) {
