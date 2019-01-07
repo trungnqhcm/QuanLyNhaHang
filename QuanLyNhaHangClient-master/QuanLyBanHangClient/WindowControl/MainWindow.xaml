@@ -1,4 +1,5 @@
-﻿<Window x:Class="QuanLyBanHangClient.MainWindow"
+﻿<Controls:MetroWindow
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" x:Class="QuanLyBanHangClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,21 +23,21 @@
             <DockPanel Margin="0,0,0,0.5" Grid.RowSpan="2">
                 <Border DockPanel.Dock="Top" CornerRadius="2,2,2,2" Margin="4,4,4,4">
                     <StackPanel Margin="0,0,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                        <Button x:Name="ButttonUser" Style="{StaticResource BtnBorderStyle}" Click="ButttonUser_Click">
+                        <Button x:Name="ButttonUser" Click="ButttonUser_Click">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Foreground="Black" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Bold" Margin="10,0,0,0">Tài khoản:</TextBlock>
                                 <TextBlock FontSize="14" FontWeight="Bold" FontStyle="Italic" Foreground="Red" Margin="10,0,0,0" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Center">admin</TextBlock>
                                 <Image x:Name="ImageArrowAccount" Source="/Resource/Image/arrow-down.png" Margin="10,2,0,0" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Button>
-                        <Button x:Name="BtnChangePass" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
-                        <Button x:Name="BtnInfo" Style="{StaticResource BtnBorderStyle}" Width="150" Margin="20,0,0,0" Click="BtnInfo_Click">
+                        <Button x:Name="BtnChangePass" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnChangePass_Click">Đổi mật khẩu</Button>
+                        <Button x:Name="BtnInfo"  Width="150" Margin="20,0,0,0" Click="BtnInfo_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resource/Image/info-icon.png" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20"/>
                                 <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"><Run Text="Thông tin nhà hàng"/></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button x:Name="BtnLogout" Style="{StaticResource BtnBorderStyle}" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click">Đăng xuất</Button>
+                        <Button x:Name="BtnLogout" Width="100" Margin="10,0,0,0" Visibility="Collapsed" Click="BtnLogout_Click">Đăng xuất</Button>
                     </StackPanel>
 
                 </Border>
@@ -145,4 +146,4 @@
             </Grid>
         </Grid>
     </Border>
-</Window>
+</Controls:MetroWindow>

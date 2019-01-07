@@ -1,4 +1,6 @@
-﻿<Window x:Class="QuanLyBanHangClient.WindowControl.Login"
+﻿<Controls:MetroWindow
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+         x:Class="QuanLyBanHangClient.WindowControl.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +9,7 @@
         xmlns:controls="clr-namespace:LoadingPanelSample.Controls"
         xmlns:custom="clr-namespace:QuanLyBanHangClient.AppUserControl.Custom"
         mc:Ignorable="d"
-        Title="Quản lý nhà hàng - Đăng nhập" Height="320" Width="500" ResizeMode="NoResize"  Background="{StaticResource MainSolidColor}" WindowStartupLocation="CenterScreen">
+        Title="Đăng nhập" Height="320" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -15,8 +17,8 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Margin="0,12,0,0" FontFamily="Arial"  FontSize="18"  FlowDirection="LeftToRight" Foreground="White" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold">
-                    Restauran Manager
+            <TextBlock Margin="0,12,0,0" FontFamily="Arial"  FontSize="18"  FlowDirection="LeftToRight" Foreground="Black" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold">
+                    Restaurant Manager
             </TextBlock>
             <Image Source="/Resource/Image/app-logo-2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Margin="33,0,0,8" Visibility="Hidden"/>
             <StackPanel Grid.Row="1">
@@ -39,4 +41,4 @@
                              VerticalAlignment="Center" Width="45" Height="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Canvas.Top="0"/>
         </Grid>
     </Grid>
-</Window>
+</Controls:MetroWindow>

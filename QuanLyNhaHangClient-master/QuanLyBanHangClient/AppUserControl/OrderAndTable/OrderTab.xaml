@@ -69,7 +69,7 @@
                                     Thành tiền: 270000 VND
                                     </TextBlock>
                                 </Border>
-                                <Button Style="{StaticResource BtnNotMouseOverEffectStyle}" x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnPay_Click" FontWeight="Bold" Margin="0,0,2,2" Foreground="White">
+                                <Button x:Name="BtnPayBtm" Width="120" HorizontalAlignment="Right" Cursor="Hand" Background="DarkGray" Click="BtnPay_Click" FontWeight="Bold" Margin="0,0,2,2" Foreground="White">
                                     Thanh toán
                                 </Button>
                             </Grid>
