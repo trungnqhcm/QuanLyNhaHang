@@ -28,7 +28,7 @@ namespace QuanLyNhaHangServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<long?>("FoodCategoryId");
+                    b.Property<long>("FoodCategoryId");
 
                     b.Property<int?>("ImageId");
 
@@ -68,9 +68,9 @@ namespace QuanLyNhaHangServer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAddOrUpdate();
 
-                    b.Property<long?>("FoodId");
+                    b.Property<long>("FoodId");
 
-                    b.Property<long?>("OrderId");
+                    b.Property<long>("OrderId");
 
                     b.Property<int>("Quantities");
 
@@ -112,7 +112,7 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<long?>("UnitId");
+                    b.Property<long>("UnitId");
 
                     b.Property<int?>("imageId");
 
@@ -140,7 +140,7 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.Property<string>("Note");
 
-                    b.Property<long?>("TableId");
+                    b.Property<long>("TableId");
 
                     b.HasKey("Id");
 
@@ -213,18 +213,21 @@ namespace QuanLyNhaHangServer.Migrations
                 {
                     b.HasOne("QuanLyNhaHangServer.Models.FoodCategory", "FoodCategory")
                         .WithMany()
-                        .HasForeignKey("FoodCategoryId");
+                        .HasForeignKey("FoodCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.FoodWithOrder", b =>
                 {
                     b.HasOne("QuanLyNhaHangServer.Models.Food", "Food")
                         .WithMany()
-                        .HasForeignKey("FoodId");
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("QuanLyNhaHangServer.Models.Order", "Order")
                         .WithMany("FoodWithOrders")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Ingredient", b =>
@@ -235,14 +238,16 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.HasOne("QuanLyNhaHangServer.Models.Unit", "Unit")
                         .WithMany()
-                        .HasForeignKey("UnitId");
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Order", b =>
                 {
                     b.HasOne("QuanLyNhaHangServer.Models.Table", "Table")
                         .WithMany()
-                        .HasForeignKey("TableId");
+                        .HasForeignKey("TableId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
