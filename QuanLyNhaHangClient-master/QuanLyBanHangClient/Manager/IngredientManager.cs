@@ -125,7 +125,7 @@ namespace QuanLyBanHangClient.Manager
                 cbSuccessSent?.Invoke(networkResponse);
             };
             await RequestManager.getInstance().deleteAsync(
-                API_CONTROLLER + "/" + id,
+                API_CONTROLLER + "/" + _ingredientList[id].IngredientId,
                 newCBSuccessSent,
                 cbError
                 );
