@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -51,23 +52,7 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
                 return;
             }
             BtnRemoveTable.IsEnabled = true;
-           
-            var tbinfo = ((TableInfo)LVTable.SelectedItem).TableData;
-            var enable = true;
-            //foreach (var order in OrderManager.getInstance().OrderList)
-            //{
-            //    foreach(var two in order.Value.TableWithOrders)
-            //    {
-            //        if(two.TableId == tbinfo.Id)
-            //        {
-            //            enable = false;
-            //            break;
-            //        }
-            //    }
-            //    if (!enable) break;
-            //}
-            BtnMerge.IsEnabled = enable;
-            TextBoxCurrentTableId.Text = tbinfo.TableId.ToString();
+            TextBoxCurrentTableId.Text = ((TableInfo)LVTable.SelectedItem).TableData.TableId.ToString();
         }
 
         private void BtnAdd_Click(object sender, System.Windows.RoutedEventArgs e) {
@@ -101,6 +86,51 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             );
         }
 
+        private void BtnChangeTableId_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            int newTableId = 0;
+            if (!int.TryParse(TextBoxCurrentTableId.Text, out newTableId))
+            {
+                return;
+            }
+            int oldTableId = ((TableInfo)LVTable.SelectedItem).TableData.TableId;
+            RequestManager.getInstance().showLoading();
+            Action<NetworkResponse> cbSuccessSent =
+                    delegate (NetworkResponse networkResponse) {
+                        if (!networkResponse.Successful)
+                        {
+                            WindownsManager.getInstance().showMessageBoxSomeThingWrong();
+                        }
+                        else
+                        {
+
+                            foreach (KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList)
+                            {
+                                var table = ((List<TableWithOrder>)entry.Value.TableWithOrders).Find(t => t.TableId == oldTableId);
+                                if (entry.Value != null
+                                    && table != null)
+                                {
+                                    table.TableId = newTableId;
+                                }
+                            }
+                            reloadLVTable();
+                        }
+                        RequestManager.getInstance().hideLoading();
+                    };
+
+            Action<string> cbError =
+                    delegate (string err) {
+                        WindownsManager.getInstance().showMessageBoxErrorNetwork();
+                        RequestManager.getInstance().hideLoading();
+                    };
+            TableManager.getInstance().updateTableFromServerAndUpdate(
+                oldTableId,
+                newTableId,
+                cbSuccessSent,
+                cbError
+            );
+        }
+
         private void TextBoxCurrentTableId_TextChanged(object sender, TextChangedEventArgs e) {
             if (LVTable.SelectedIndex < 0) {
                 return;
@@ -109,8 +139,10 @@ namespace QuanLyBanHangClient.AppUserControl.OrderTab {
             int oldTableId = ((TableInfo)LVTable.SelectedItem).TableData.TableId;
             if (!int.TryParse(TextBoxCurrentTableId.Text, out newTableId)
                 || newTableId == oldTableId) {
+                BtnChangeTableId.IsEnabled = false;
                 return;
             }
+            BtnChangeTableId.IsEnabled = true;
         }
 
         private void BtnRefresh_Click(object sender, System.Windows.RoutedEventArgs e) {
