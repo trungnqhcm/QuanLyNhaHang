@@ -200,7 +200,7 @@ namespace QuanLyNhaHangServer.Migrations
 
                     b.HasIndex("TableId");
 
-                    b.ToTable("TableWithOrders");
+                    b.ToTable("TableWithOrder");
                 });
 
             modelBuilder.Entity("QuanLyNhaHangServer.Models.Unit", b =>
