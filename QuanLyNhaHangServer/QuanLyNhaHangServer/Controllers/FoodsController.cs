@@ -26,7 +26,8 @@ namespace QuanLyNhaHangServer.Controllers
         [HttpGet]
         public IActionResult GetFoods()
         {
-            var jObject = Utils.getJObjectResponseFromArray(true, _context.Foods.ToList());
+            var foods = _context.Foods.Include(f => f.IngredientWithFoods).Include(f => f.FoodCategory).ToList();
+            var jObject = Utils.getJObjectResponseFromArray(true, foods);
             return Ok(jObject);
         }
 
@@ -66,7 +67,7 @@ namespace QuanLyNhaHangServer.Controllers
                   
                     _food.FoodCategory = food.FoodCategory;
                     _food.ImageId = food.ImageId;
-                    food.Ingredients = food.Ingredients;
+                    food.IngredientWithFoods = food.IngredientWithFoods;
                     food.Price = food.Price;
                 }
                 await _context.SaveChangesAsync();
@@ -88,16 +89,23 @@ namespace QuanLyNhaHangServer.Controllers
 
         // POST: api/Foods
         [HttpPost]
-        public async Task<IActionResult> PostFood([FromForm] Food food)
+        public async Task<IActionResult> PostFood([FromBody] Food food)
         {
+            string error = "";
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Foods.Add(food);
-            await _context.SaveChangesAsync();
-            var jObject = Utils.getJObjectResponseFromObject(true, food);
+            try
+            {
+                _context.Foods.Add(food);
+                await _context.SaveChangesAsync();
+            }catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+           
+            var jObject = Utils.getJObjectResponseFromObject(true, food, error);
             return CreatedAtAction("GetFood", new { id = food.Id }, jObject);
         }
 

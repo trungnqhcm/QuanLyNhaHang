@@ -17,6 +17,6 @@ namespace QuanLyNhaHangServer.Models
         [ForeignKey("FoodCategoryId")]
         public virtual FoodCategory FoodCategory { get; set; }
 
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<IngredientWithFood> IngredientWithFoods { get; set; }
     }
 }

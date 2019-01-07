@@ -16,17 +16,32 @@ namespace QuanLyNhaHangServer.Helpers
             jObject.Data = new JArray();
             foreach (var item in data)
             {
-                jObject.Data.Add(JObject.Parse(JsonConvert.SerializeObject(item)));
+                jObject.Data.Add(JObject.Parse(JsonConvert.SerializeObject(item, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                })));
             }
             return jObject;
         }
 
-        public static JObject getJObjectResponseFromObject(bool isSuccess, object data)
+        //private static JObject parseArray<T>(List<T> data)
+        //{
+        //    var jObject = (dynamic)new JObject();
+        //    jObject.Data = new JArray();
+        //    foreach (var item in data)
+        //    {
+        //        jObject.Data.Add(JObject.Parse(JsonConvert.SerializeObject(item)));
+        //    }
+        //    return jObject;
+        //}
+
+        public static JObject getJObjectResponseFromObject(bool isSuccess, object data, string error = "")
         {
             var jObject = (dynamic)new JObject();
             jObject.Successful = isSuccess;
             jObject.Data = JObject.Parse(JsonConvert.SerializeObject(data));
-
+            jObject.Error = error;
             return jObject;
         }
     }
