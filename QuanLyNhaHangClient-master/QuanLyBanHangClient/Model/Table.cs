@@ -9,6 +9,7 @@ namespace QuanLyBanHangAPI.model
 {
     public class Table
     {
+        public int Id { get; set; }
         public int TableId { get; set; }
 
         public Table()

@@ -1,6 +1,7 @@
 ﻿using QuanLyBanHangAPI.model;
 using QuanLyBanHangClient.AppUserControl.OrderTab.Models;
 using QuanLyBanHangClient.Manager;
+using QuanLyBanHangClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,8 +72,17 @@ namespace QuanLyBanHangClient.AppUserControl.OrderAndTable
             LVOrderInfo.Items.Clear();
             foreach(KeyValuePair<int, Order> entry in OrderManager.getInstance().OrderList) {
                 if(entry.Value != null) {
+                    //THERE COULD BE SOMETHING WRONG HERE
+                    bool contain = true;
+                    foreach (TableWithOrder tb in entry.Value.TableWithOrders)
+                    {
+                        if (!listTableId.Contains(tb.TableId))
+                        {
+                            contain = false;
+                        }
+                    }
                     if (listTableId.Count > 0
-                        && !listTableId.Contains(entry.Value.TableId)) {
+                        && !contain) {
                         continue;
                     }
                     if(UtilFuction.GetTime(entry.Value.CreatedDate) < timeFrom
