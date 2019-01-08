@@ -371,6 +371,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resource\Font\VT323-Regular.ttf" />
     <Resource Include="Resource\Font\VHELVCN.TTF" />
     <Resource Include="Resource\Font\74_14343_UVNKeChuyen1.ttf" />
   </ItemGroup>
